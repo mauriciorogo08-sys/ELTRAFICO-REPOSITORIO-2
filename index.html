@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIARIO EL TRAFICANTE | Arte, Cultura & Contrabando Mental</title>
+    <title>El Diario El Tráfico | Periodismo Lento </title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Merriweather for classic newspaper, Inter for UI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:ital,wght@0,800;0,900;1,900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+   
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                        display: ['Montserrat', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                        display: ['Playfair Display', 'serif'],
                     },
                     colors: {
                         brand: {
-                            red: '#DF1921',      /* Rojo icónico Rolling Stone */
-                            charcoal: '#111111', /* Negro puro de alto contraste */
-                            paper: '#FDFDFD',    /* Blanco brillante de revista */
-                            ink: '#1A1A1A',      /* Tinta oscura */
-                            grayBg: '#F4F4F4'    /* Gris claro para bloques y texturas */
+                            yellow: '#FFC700',
+                            red: '#E53E3E',
+                            orange: '#DD6B20',
+                            charcoal: '#1A202C',
+                            paper: '#F4EFE6',
+                            ink: '#231F20'
                         }
                     }
                 }
@@ -32,6 +35,10 @@
         }
     </script>
     <style>
+        /* Custom effects for a tactile newspaper feel */
+        .newspaper-border {
+            border-image: repeating-linear-gradient(0deg, #231F20, #231F20 2px, transparent 2px, transparent 4px) 15;
+        }
         .scrolling-text {
             animation: marquee 35s linear infinite;
         }
@@ -39,192 +46,225 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+        .paper-grain {
+            background-color: #fcfaf2;
+            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0), radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+            background-size: 8px 8px;
+            background-position: 0 0, 4px 4px;
+        }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #F4F4F4;
+            background: #F4EFE6;
         }
         ::-webkit-scrollbar-thumb {
-            background: #DF1921;
-            border-radius: 0px;
+            background: #1A202C;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="bg-brand-paper text-brand-ink font-serif transition-colors duration-500 selection:bg-brand-red selection:text-white" id="mainBody">
+<body class="paper-grain text-brand-ink font-serif transition-colors duration-500 selection:bg-brand-yellow selection:text-brand-ink" id="mainBody">
 
-    <div class="border-b-2 border-brand-charcoal py-2 px-4 text-xs font-display uppercase tracking-widest flex justify-between items-center bg-brand-charcoal text-white">
+    <!-- Top Utility Bar -->
+    <div class="border-b border-brand-ink py-1 px-4 text-xs font-sans uppercase tracking-widest flex justify-between items-center bg-brand-charcoal text-brand-yellow">
         <div>
-            <span class="text-brand-red font-black">EXCLUSIVO:</span> 
-            <span class="animate-pulse" id="transitState">La última entrevista perdida de la contracultura</span>
+            <span class="font-bold">TRAFICANDO IDEAS:</span> 
+            <span class="animate-pulse text-red-500" id="transitState">Embudo existencial de 15 km</span>
         </div>
         <div class="flex items-center gap-4">
-            <span id="liveClock" class="font-mono text-[11px]">Cargando Frecuencias Sonoras...</span>
-            <button onclick="toggleTheme()" class="bg-brand-red text-white font-black px-2 py-0.5 rounded-none text-[10px] hover:bg-white hover:text-brand-red transition-all flex items-center gap-1">
+            <span id="liveClock">Cargando Husos Horarios Desviados...</span>
+            <button onclick="toggleTheme()" class="bg-brand-yellow text-brand-charcoal font-bold px-2 py-0.5 rounded text-[10px] hover:bg-white transition-all flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                <span id="themeBtnText">Modo Amplificador</span>
+                <span id="themeBtnText">Modo Alarma</span>
             </button>
         </div>
     </div>
 
+    <!-- Newspaper Header (Masthead) -->
     <header class="container mx-auto px-4 py-8 text-center max-w-7xl">
-        <div class="border-b-4 border-brand-charcoal pb-4">
-            <p class="text-xs uppercase tracking-[0.3em] font-display font-black text-center py-2 text-brand-red">
-                MÚSICA · ARTE · CINE · PERIODISMO CRÍTICO & RADICAL
+        <div class="border-b-4 border-double border-brand-ink pb-4">
+            <p class="text-xs uppercase tracking-[0.25em] font-sans font-bold text-center py-2 text-gray-600 italic">
+                "La verdad avanza a paso de tortuga... pero constante"
             </p>
             
-            <h1 class="font-display text-6xl md:text-9xl font-black uppercase tracking-tighter my-1 leading-none cursor-pointer select-none text-brand-red italic hover:text-brand-charcoal transition-colors duration-300" onclick="playPerfectHorn(440, 'sine', 0.2)">
-                DIARIO EL TRAFICANTE
+            <h1 class="font-display text-5xl md:text-8xl font-black uppercase tracking-tight my-2 leading-none cursor-pointer select-none" onclick="playPerfectHorn(440, 'sine', 0.2)">
+                 DIARIO EL TRAFICANTE
             </h1>
 
-            <div class="flex flex-col md:flex-row justify-between items-center border-t border-brand-charcoal pt-3 mt-4 text-xs font-display font-bold uppercase tracking-wider text-brand-charcoal">
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-brand-ink pt-3 mt-4 text-xs font-sans tracking-wide text-gray-700">
                 <div class="text-center md:text-left mb-2 md:mb-0">
-                    <span>Año 28 | Nº 402</span> | <span>Director Honorario: Atanasio Paragolpes</span>
+                    <span>Fundado en el gran atasco del 98</span> | <span>Director: Atanasio Paragolpes</span>
                 </div>
-                <div class="bg-brand-charcoal text-white px-3 py-1 text-xs font-black tracking-widest mb-2 md:mb-0 text-center uppercase animate-bounce">
-                    ¡EDICIÓN DE COLECCIÓN!
+                <div class="font-bold bg-brand-yellow text-brand-charcoal px-3 py-1 rounded-sm uppercase tracking-wider mb-2 md:mb-0 text-center animate-bounce">
+                    ¡EDICIÓN TOTALMENTE PARALIZADA!
                 </div>
                 <div class="text-center md:text-right">
-                    <span>Precio: 1 Clic Mental</span> | <span id="currentDate">Martes, 26 de Mayo de 2026</span>
+                    <span>Precio: 1 Clic Psicológico</span> | <span id="currentDate">Martes, 26 de Mayo de 2026</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="bg-brand-red text-white border-y-2 border-brand-charcoal py-2 overflow-hidden relative font-display text-xs uppercase tracking-wider flex">
-        <span class="bg-brand-charcoal text-white font-black px-4 py-1 z-10 flex items-center shrink-0">ALERTA CULTURAL:</span>
+    <!-- Absurd Live Headline Ticker -->
+    <div class="bg-brand-charcoal text-white border-y border-brand-ink py-2 overflow-hidden relative font-sans text-xs uppercase tracking-wider flex">
+        <span class="bg-brand-red text-white font-bold px-4 py-1 z-10 flex items-center shrink-0 uppercase animate-pulse">ÚLTIMO EMBOTELLAMIENTO:</span>
         <div class="w-full flex items-center overflow-hidden">
             <div class="scrolling-text whitespace-nowrap flex gap-12 font-bold" id="tickerItems">
-                <span>🎸 El fantasma de un riff de Jimi Hendrix se manifiesta en un garaje de Vallecas; los vecinos declaran el lugar zona de culto psicodélico.</span>
-                <span>🎬 Descubren cinta inédita de Kubrick grabada enteramente dentro de un ascensor: dura 14 horas y el protagonista es una planta.</span>
-                <span>🎨 Pintor dadaísta vende un lienzo invisible por 2 millones; el comprador afirma que "combina perfectamente con sus muebles abstractos".</span>
-                <span>🎵 Un sintetizador modular cobra conciencia propia en Berlín y exige que le paguen regalías en forma de voltajes limpios.</span>
+                <span>🚗 Un conductor tarda tanto en salir del túnel que sale jubilado y con un huerto en el maletero.</span>
+                <span>🚦 El semáforo de la Calle Mayor cumple 8 meses en rojo: los peatones declaran el paso de cebra "Estado Independiente".</span>
+                <span>💡 Gobierno propone sustituir el asfalto por colchonetas elásticas para agilizar el tráfico por saltos.</span>
+                <span>🧠 Psicólogos advierten: Insultar al volante ya no alivia el estrés, recomiendan componer óperas cortas en tercera marcha.</span>
+                <span>🍩 Agujero de la rotonda sur absorbs tres patinetes y un camión de Donuts; los vecinos celebran un festival gastronómico improvisado.</span>
             </div>
         </div>
     </div>
 
+    <!-- Main Content Grid -->
     <main class="container mx-auto px-4 py-8 max-w-7xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <section class="lg:col-span-3 border-r-0 lg:border-r-2 border-brand-charcoal pr-0 lg:pr-6 space-y-8">
-                <div class="border-b-2 border-brand-charcoal pb-6">
-                    <span class="font-display font-black text-xs text-brand-red uppercase tracking-widest block mb-2">● CINE DE CULTO</span>
-                    <h3 class="font-display font-black text-xl tracking-tight leading-tight hover:text-brand-red transition-colors">
-                        <a href="#cine" onclick="openArticleModal('La Estética del Grano', 'Por Atanasio Paragolpes', 'El cine contemporáneo ha muerto a manos del pixel perfecto. Ya nadie respira el polvo químico del celuloide, ese bello accidente que transformaba la luz en nostalgia pura. Volver a las proyecciones de 16mm es el único acto de rebeldía que nos queda frente a las pantallas táctiles.')">
-                            La Metafísica del Celuloide: ¿Por qué el grano nos hace humanos?
+            <!-- LEFT COLUMN: Secondary News & Opinion Columns (3 Cols) -->
+            <section class="lg:col-span-3 border-r-0 lg:border-r border-brand-ink pr-0 lg:pr-6 space-y-8">
+                <div class="border-b border-brand-ink pb-6">
+                    <span class="font-sans font-black text-xs text-brand-red uppercase tracking-widest block mb-2">● OPINIÓN DE EXPERTOS</span>
+                    <h3 class="font-display font-bold text-xl leading-tight hover:text-brand-orange transition-colors">
+                        <a href="#opinion" onclick="openArticleModal('La Metafísica del Embrague', 'Por Atanasio Paragolpes', 'Presionar el embrague y soltarlo lentamente es, sin lugar a dudas, la metáfora más fidedigna del libre albedrío en la sociedad posindustrial. Creemos que decidimos avanzar, pero es el disco de fricción el que determina nuestra sumisión al destino colectivo. El atasco no es una circunstancia vial; es una estructura mental donde el motor encendido consume nuestro tiempo sin generar distancias.')">
+                            La Metafísica del MATE: ¿Por qué existimos si podemos estar parados?
                         </a>
                     </h3>
-                    <p class="text-xs text-gray-600 mt-2 font-display uppercase tracking-wider">Por Atanasio Paragolpes</p>
-                    
-                    <div class="my-4">
-                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" 
-                             alt="Proyector de cine antiguo" 
-                             class="w-full h-44 object-cover filter grayscale contrast-150 border border-brand-charcoal">
-                        <p class="text-[11px] italic text-gray-600 mt-1 font-sans">Fig 1. Luz refractada, grano analógico y silencios de autor.</p>
-                    </div>
-
+                    <p class="text-xs text-gray-600 mt-2 font-sans italic">Por Atanasio Paragolpes</p>
                     <p class="text-sm text-gray-700 mt-3 leading-relaxed">
-                        El proyector no reproduce imágenes; proyecta nuestras propias frustraciones estéticas sobre una lona blanca...
+                        Presionar el pedal no nos libera, solo retrasa el inminente choque de nuestras frustrations urbanas...
                     </p>
                 </div>
 
-                <div class="border-b-2 border-brand-charcoal pb-6">
-                    <span class="font-display font-black text-xs text-brand-charcoal uppercase tracking-widest block mb-2">● ARTES VISUALES</span>
-                    <h3 class="font-display font-black text-lg tracking-tight leading-tight hover:text-brand-red transition-colors">
-                        <a href="#arte" onclick="openArticleModal('El Caos en el Lienzo', 'Redacción El Tráfico', 'Una mirada profunda a las corrientes neodadaístas que abandonaron los museos tradicionales para pintar con ruido y estática de televisores analógicos. El arte ya no se mira, se sintoniza.')">
-                            Pintando con Estática: Los herederos del ruido visual y los lienzos mudos
+                <div class="border-b border-brand-ink pb-6">
+                    <span class="font-sans font-black text-xs text-brand-orange uppercase tracking-widest block mb-2">● SOCIEDAD Y CLAXONS</span>
+                    <h3 class="font-display font-bold text-lg leading-tight hover:text-brand-orange transition-colors">
+                        <a href="#sociedad" onclick="openArticleModal('El Coro Filarmónico de las 18:00', 'Redacción El Tráfico', 'Un grupo de musicólogos de la universidad del Asfalto ha catalogado los bocinazos de la hora punta como una sinfonía dodecafónica post-moderna. Según el estudio, el \'Piiiii\' sostenido en Fa sostenido del autobús urbano representa la angustia del proletariado, mientras que los toques cortos del monovolumen expresan neurosis existenciales de clase media-alta.')">
+                            Musicología de la hora punta: Análisis de los mejores bocinazos de la tarde
                         </a>
                     </h3>
-                    
-                    <div class="my-4">
-                        <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80" 
-                             alt="Pintura abstracta de alto contraste" 
-                             class="w-full h-44 object-cover filter contrast-125 border border-brand-charcoal">
-                        <p class="text-[11px] italic text-gray-600 mt-1 font-sans">Fig 2. Textura matérica expuesta al escrutinio del espectador cínico.</p>
-                    </div>
-
                     <p class="text-sm text-gray-700 mt-2 leading-relaxed">
-                        El color rojo no decora, pincha la córnea del espectador burgués cansado del minimalismo corporativo beige.
+                        El claxon no grita, canta a la desesperanza del retorno a un hogar que ya no reconocemos.
                     </p>
+                    
+                    <!-- Imagen de Tráfico Saturado con Estética de Prensa -->
+                    <div class="my-4">
+                        <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80" 
+                             alt="Atasco masivo surrealista" 
+                             class="w-full h-44 object-cover filter grayscale contrast-125 border-2 border-brand-ink rounded shadow-md">
+                        <p class="text-[11px] italic text-gray-600 mt-1 font-sans border-b border-brand-ink pb-1">Fig 1. Vista panorámica de la resignación urbana a las 8:30 AM.</p>
+                    </div> 
                 </div>
 
-                <div class="bg-brand-grayBg p-4 rounded-none border-l-4 border-brand-red">
-                    <h4 class="font-display font-black text-xs uppercase tracking-wider text-brand-red mb-1">Manifiesto de la Redacción</h4>
-                    <p class="font-serif text-xs italic">"Suba el volumen de su reproductor hasta que las paredes tiemblen. Si la música no incomoda a sus vecinos, no es cultura, es mero acompañamiento de ascensor."</p>
-                    <p class="text-[10px] font-display text-right mt-2 text-gray-500">— Sindicato del Ruido Organizado</p>
+                <!-- Small Art Feature Box -->
+                <div class="bg-brand-yellow/20 p-4 rounded-lg border border-brand-yellow/50">
+                    <h4 class="font-sans font-bold text-xs uppercase tracking-wider text-brand-orange mb-1">Anuncio Patrocinado</h4>
+                    <p class="font-serif text-xs italic">"Venda su coche y compre un sillón cómodo para sentarse en la acera a criticar a los que conducen. El verdadero estatus."</p>
+                    <p class="text-[10px] font-sans text-right mt-2 text-gray-500">— Asoc. de Filosofía del Parachoques</p>
                 </div>
             </section>
 
+            <!-- CENTER COLUMN: Main Cover Story & Visual Art (6 Cols) -->
             <section class="lg:col-span-6 space-y-8">
-                <div class="border-b-4 border-brand-charcoal pb-8">
+                <div class="border-b-4 border-brand-ink pb-8">
+                    <!-- Category & Status Tag -->
                     <div class="flex justify-between items-center mb-3">
-                        <span class="bg-brand-red text-white text-xs font-display font-black px-3 py-1 uppercase tracking-widest">ARTÍCULO DE PORTADA</span>
-                        <span class="text-xs font-sans text-gray-500 italic">Lectura a 33 revoluciones por minuto</span>
+                        <span class="bg-brand-red text-white text-xs font-sans font-bold px-3 py-1 uppercase rounded-sm tracking-widest">PORTADA CONCEPTUAL</span>
+                        <span class="text-xs font-sans text-gray-500 italic">Lectura obligatoria a velocidad de ralentí</span>
                     </div>
 
-                    <h2 class="font-display font-black text-3xl md:text-5xl text-brand-charcoal tracking-tighter leading-none hover:text-brand-red cursor-pointer transition-colors" onclick="openArticleModal('LA REVOLUCIÓN DE LOS RUIDOS ANALÓGICOS', 'Departamento de Crítica Sónica', 'En una era dominada por algoritmos predictivos y música procesada en laboratorios de marketing, las bandas de garage vuelven a los amplificadores de válvulas oxidadas. El error, la distorsión y el acople no son fallos técnicos: son la firma de que todavía queda sangre en las venas del arte.')">
-                        LA VANGUARDIA DEL RUIDO: CÓMO LOS ACOPLES DE GUITARRA SALVARON LA SALUD MENTAL DE UNA GENERACIÓN
+                    <!-- Main Bold Title -->
+                    <h2 class="font-display font-black text-3xl md:text-5xl text-brand-ink leading-none hover:text-brand-orange cursor-pointer transition-colors" onclick="openArticleModal('LA DGT DECLARA EL ASBESTO EMOCIONAL COMO ACCIDENTE DE TRÁFICO', 'Departamento de Tragedias Cotidianas', 'En una resolución sin precedentes, la Dirección General de Tránsito Mental ha decretado que las discusiones de pareja iniciadas en un atasco de más de dos horas no computarán como divorcio de mutuo acuerdo, sino como \'siniestro total de compatibilidad\'. Los psicólogos de guardia recomiendan no responder preguntas de tipo: \'¿En qué estás pensando?\' mientras se realiza un cambio de carril sin señalizar.')">
+                        SE DECLARA EL "ATASCO EMOCIONAL" COMO PARO SINDICAL, SUMANDO PROTESTAS HIPOACUSICAS
                     </h2>
 
-                    <div class="my-6 border border-brand-charcoal relative group bg-brand-charcoal overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80" 
-                             alt="Concierto de Rock enérgico" 
-                             class="w-full h-80 object-cover filter contrast-125 grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700 cursor-pointer">
-                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <span class="text-xs text-brand-red font-display font-black uppercase tracking-wider">Fotografía de Portada</span>
-                            <h4 class="text-white font-display font-black text-sm uppercase">El éxtasis analógico capturado en el sótano del Underground absoluto.</h4>
+                    <!-- Conceptual Art Piece (Interactive Canvas/SVG replacing photo) -->
+                    <div class="my-6 border-2 border-brand-ink rounded overflow-hidden relative group bg-brand-charcoal h-64 flex flex-col justify-between p-4 cursor-pointer" onclick="triggerVisualChaos()">
+                        <!-- Background abstract visual noise lines -->
+                        <div class="absolute inset-0 opacity-20 pointer-events-none flex flex-col justify-between">
+                            <div class="h-1 bg-yellow-400 w-full animate-pulse" style="animation-duration: 2s"></div>
+                            <div class="h-1 bg-red-500 w-full animate-pulse" style="animation-duration: 1.5s"></div>
+                            <div class="h-1 bg-yellow-400 w-full animate-pulse" style="animation-duration: 3s"></div>
+                            <div class="h-1 bg-red-500 w-full animate-pulse" style="animation-duration: 2.5s"></div>
+                        </div>
+
+                        <!-- Art Canvas UI Overlays -->
+                        <div class="z-10 flex justify-between items-start">
+                            <span class="bg-brand-yellow text-brand-charcoal font-sans font-bold text-xs px-2 py-0.5 rounded">Obra Interactiva #041</span>
+                            <span class="text-xs text-white bg-red-600 px-2 py-0.5 rounded animate-pulse">PULSA PARA GENERAR CAOS</span>
+                        </div>
+
+                        <!-- Central Absurd Visual Vector (pure SVG representing traffic crisis) -->
+                        <div class="z-10 flex justify-center items-center flex-col my-auto text-center" id="artVisualCenter">
+                            <svg class="w-24 h-24 text-brand-yellow transition-transform duration-500 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            <span class="text-xs font-mono text-gray-300 mt-2 italic block">"La AVENIDA Mental está saturada de ideas a medio digerir"</span>
+                        </div>
+
+                        <div class="z-10 text-right">
+                            <span class="text-[10px] font-mono text-brand-yellow bg-brand-charcoal px-2 py-1 rounded">Instrucción: Despierta los osciladores web haciendo clic</span>
                         </div>
                     </div>
 
-                    <p class="text-lg leading-relaxed text-gray-850 font-serif first-letter:text-6xl first-letter:font-black first-letter:float-left first-letter:mr-3 first-letter:text-brand-red first-letter:font-display">
-                        Tras décadas de perfección digital donde el autotune y las rejillas de tiempo cuantizadas domesticaron el espíritu salvaje del rock, las alcantarillas de la creación han reventado. Una nueva ola de músicos armados con casetes magnéticos rotos y guitarras desafinadas ha decidido sabotear el algoritmo.
+                    <p class="text-md leading-relaxed text-gray-800 font-serif first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-brand-orange">
+                        Tras décadas de estudios científicos que combinan la mecánica de fluidos viscosos con la mala leche acumulada de los lunes por la mañana, las autoridades han capitulado. A partir de hoy, quedarse atrapado en una rotonda pensando en "qué he hecho con mi vida" será considerado un accidente laboral de carácter psicológico grave.
                     </p>
                     <p class="text-sm leading-relaxed text-gray-700 mt-4">
-                        Los críticos más puristas se tapan los oídos mientras las salas clandestinas se llenan de jóvenes que buscan, por encima de todo, sentir el golpe físico de una vibración impredecible en el pecho. No se trata de melodías agradables, sino de un exorcismo sónico colectivo.
+                        Los agentes de movilidad estarán capacitados para ofrecer pañuelos desechables, té de tilo, y en casos extremos, leerán fragmentos del filósofo pesimista Emil Cioran por megáfono para relativizar la existencia del conductor.
                     </p>
                 </div>
 
-                <div class="bg-brand-grayBg border-2 border-brand-charcoal p-6 shadow-none">
+                <!-- Dynamic Interactive Widget: El Semáforo Existencial -->
+                <div class="bg-brand-paper border-2 border-brand-ink rounded-lg p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-3 h-3 rounded-none bg-brand-red animate-ping"></div>
-                        <h3 class="font-display font-black text-lg uppercase tracking-wider">EL OSCILADOR EXISTENCIAL</h3>
+                        <div class="w-3 h-3 rounded-full bg-brand-red animate-ping"></div>
+                        <h3 class="font-sans font-black text-lg uppercase tracking-wider">EL SEMÁFORO EXISTENCIAL</h3>
                     </div>
                     
                     <p class="text-xs text-gray-600 mb-4 font-sans">
-                        Modula las frecuencias del arte urbano. Haz clic en los botones para disparar armónicos y alterar el flujo estético del periódico.
+                        Haz clic en los focos de luz para alterar tu estado de conciencia ciudadana y escuchar los armónicos del motor de la civilización.
                     </p>
 
                     <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
-                        <div class="bg-brand-charcoal p-4 flex flex-row md:flex-col gap-3 w-full md:w-24 shrink-0 justify-center">
-                            <button onclick="changeSemaphore('red', 110, 'Frecuencia grave. Vibración de sótano analógico y cine expresionista.')" 
-                                    class="w-12 h-12 rounded-none bg-brand-red border border-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-brand-red active:scale-95 group" 
+                        <!-- Traffic Light Visual -->
+                        <div class="bg-black p-4 rounded-3xl flex flex-col gap-3 shadow-inner w-24 shrink-0">
+                            <!-- RED LIGHT -->
+                            <button onclick="changeSemaphore('red', 180, 'Pare y acepte la inmovilidad universal.')" 
+                                    class="w-16 h-16 rounded-full bg-red-900 border-2 border-red-500/50 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-red-500 active:scale-95" 
                                     id="light-red">
-                                <span class="text-[10px] text-white group-hover:text-brand-red font-display font-black uppercase">LOW</span>
+                                <span class="text-[10px] text-red-200 font-mono font-bold uppercase">PARE</span>
                             </button>
-                            <button onclick="changeSemaphore('yellow', 440, 'Frecuencia media. El grito de los amplificadores de válvulas saturadas.')" 
-                                    class="w-12 h-12 rounded-none bg-zinc-700 border border-white flex items-center justify-center transition-all duration-300 hover:bg-brand-red active:scale-95 group" 
+                            <!-- YELLOW LIGHT -->
+                            <button onclick="changeSemaphore('yellow', 290, 'Dude. El pánico es razonable en este tramo.')" 
+                                    class="w-16 h-16 rounded-full bg-yellow-950 border-2 border-yellow-500/30 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-yellow-500 active:scale-95" 
                                     id="light-yellow">
-                                <span class="text-[10px] text-white font-display font-black uppercase">MID</span>
+                                <span class="text-[10px] text-yellow-200 font-mono font-bold uppercase">DUDE</span>
                             </button>
-                            <button onclick="changeSemaphore('green', 880, 'Frecuencia alta. El acople psicodélico puro que despierta la conciencia.')" 
-                                    class="w-12 h-12 rounded-none bg-zinc-700 border border-white flex items-center justify-center transition-all duration-300 hover:bg-brand-red active:scale-95 group" 
+                            <!-- GREEN LIGHT -->
+                            <button onclick="changeSemaphore('green', 440, 'Avance. Pero recuerde que el destino es una ilusión óptica.')" 
+                                    class="w-16 h-16 rounded-full bg-green-950 border-2 border-green-500/30 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-green-500 active:scale-95" 
                                     id="light-green">
-                                <span class="text-[10px] text-white font-display font-black uppercase">HIGH</span>
+                                <span class="text-[10px] text-green-200 font-mono font-bold uppercase">HUYA</span>
                             </button>
                         </div>
 
-                        <div class="flex-1 w-full bg-white border border-brand-charcoal p-4 min-h-[140px] flex flex-col justify-between shadow-none">
+                        <!-- Philosophical Output Box -->
+                        <div class="flex-1 w-full bg-white border border-brand-ink p-4 rounded min-h-[140px] flex flex-col justify-between shadow-sm">
                             <div>
-                                <span class="text-[10px] font-display font-black uppercase text-brand-red tracking-wider">ESTADO DE LA FRECUENCIA:</span>
+                                <span class="text-[10px] font-sans font-bold uppercase text-brand-orange tracking-wider">DICTAMEN EXPLICATIVO:</span>
                                 <p class="text-md font-serif italic mt-2 leading-snug" id="semaphoreMessage">
-                                    "El silencio prolongado es el mayor enemigo del arte moderno. Enciende el ruido."
+                                    "La inmovilidad es el único estado que garantiza que no atropellarás tus propios principios morales."
                                 </p>
                             </div>
                             <div class="border-t border-gray-200 pt-2 mt-4 flex justify-between items-center text-[11px] font-sans text-gray-500">
-                                <span>Onda Synthesizer: <strong id="synthToneName" class="font-display uppercase text-brand-red text-[10px]">Onda Cruda</strong></span>
-                                <button onclick="triggerHonkCascade()" class="bg-brand-charcoal text-white hover:bg-brand-red px-2 py-1 text-[9px] font-display font-black uppercase transition-colors tracking-wider">
-                                    📣 Disparar Acople Sónico
+                                <span>Tono Synthesizer: <strong id="synthToneName">Grave Existencial</strong></span>
+                                <button onclick="triggerHonkCascade()" class="bg-brand-charcoal text-white hover:bg-brand-red px-2 py-0.5 rounded text-[9px] transition-colors">
+                                    📣 Probar Claxon Armónico
                                 </button>
                             </div>
                         </div>
@@ -232,144 +272,180 @@
                 </div>
             </section>
 
-            <section class="lg:col-span-3 space-y-8 lg:border-l-2 lg:border-brand-charcoal lg:pl-6">
+            <!-- RIGHT COLUMN: Interactive Generators & User Grievances (3 Cols) -->
+            <section class="lg:col-span-3 space-y-8 lg:border-l lg:border-brand-ink lg:pl-6">
                 
-                <div class="border-b-2 border-brand-charcoal pb-6">
-                    <span class="bg-brand-charcoal text-white text-[10px] font-display font-black px-2 py-1 uppercase tracking-wider inline-block mb-3">
-                        GENERADOR DE EXCUSAS BOHEMIAS
+                <!-- Generator Widget: Excusas Viales -->
+                <div class="border-b-2 border-brand-ink pb-6">
+                    <span class="bg-brand-charcoal text-white text-[10px] font-sans font-bold px-2 py-1 uppercase rounded-sm tracking-wider inline-block mb-3">
+                        GENERADOR DE EXCUSAS VIALES
                     </span>
-                    <h3 class="font-display font-black text-lg mb-2 tracking-tight leading-tight">¿No fuiste a la exposición o al ensayo?</h3>
+                    <h3 class="font-display font-bold text-lg mb-2 leading-tight">¿Llegas tarde? Te salvamos con arte</h3>
                     <p class="text-xs text-gray-600 mb-4 leading-relaxed">
-                        Introduce tu excusa mundana y la transformamos en un manifiesto vanguardista inapelable.
+                        Introduce la verdad de tu retraso y la transformamos en una obra poética que tu jefe no podrá cuestionar.
                     </p>
 
                     <div class="space-y-3">
-                        <input type="text" id="excuseBaseInput" placeholder="Ej: Me dio pereza salir..." 
-                               class="w-full text-xs font-sans p-2 border border-brand-charcoal bg-white focus:outline-none focus:ring-1 focus:ring-brand-red">
+                        <input type="text" id="excuseBaseInput" placeholder="Ej: Me quedé dormido..." 
+                               class="w-full text-xs font-sans p-2 border border-brand-ink rounded bg-white focus:outline-none focus:ring-1 focus:ring-brand-orange">
                         
                         <button onclick="generateAbsurdExcuse()" 
-                                class="w-full bg-brand-red hover:bg-brand-charcoal text-white font-display font-black py-2 text-xs tracking-wider transition-colors uppercase">
-                            Redactar Coartada Dadaístas
+                                class="w-full bg-brand-orange hover:bg-brand-charcoal text-white font-sans font-bold py-2 rounded text-xs tracking-wider transition-colors uppercase">
+                            Generar Coartada Surrealista
                         </button>
 
-                        <div id="excuseOutputBox" class="hidden p-3 bg-brand-grayBg border border-brand-charcoal text-xs font-serif italic leading-relaxed mt-2 text-brand-ink relative">
-                            <button onclick="copyExcuseToClipboard()" class="absolute top-1 right-1 text-[9px] uppercase font-display font-black bg-white px-1 hover:bg-brand-red hover:text-white border border-brand-charcoal">Copiar</button>
+                        <div id="excuseOutputBox" class="hidden p-3 bg-brand-yellow/30 border border-brand-yellow rounded text-xs font-serif italic leading-relaxed mt-2 text-brand-ink relative">
+                            <button onclick="copyExcuseToClipboard()" class="absolute top-1 right-1 text-[9px] uppercase font-sans font-bold bg-white/70 px-1 rounded hover:bg-white border border-gray-300">Copiar</button>
                             <span id="excuseText"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="border-b-2 border-brand-charcoal pb-6">
-                    <span class="font-display font-black text-xs text-brand-red uppercase tracking-widest block mb-2">● RECOMENDACIÓN SEMANAL</span>
-                    <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=800&q=80" 
-                         alt="Colección de discos de vinilo" 
-                         class="w-full h-40 object-cover filter contrast-125 border border-brand-charcoal mb-2">
-                    <h4 class="font-display font-black text-sm uppercase">Los LP que definieron el fracaso comercial más glorioso.</h4>
-                    <p class="text-xs text-gray-600 mt-1">Joyas de 1974 que vendieron 12 copias pero fundaron 14 géneros musicales distintos.</p>
-                </div>
-
-                <div class="bg-white border border-brand-charcoal p-4 shadow-none">
-                    <span class="text-xs font-display font-black text-brand-red uppercase tracking-widest block mb-2">📢 EL MURO DE LAS QUEJAS ARTÍSTICAS</span>
+                <!-- User Collective Grievances Pinboard (LocalStorage) -->
+                <div class="bg-white border border-brand-ink rounded p-4 shadow-sm">
+                    <span class="text-xs font-sans font-bold text-brand-red uppercase tracking-widest block mb-2">📢 DENUNCIÓMETRO COLECTIVO</span>
                     <p class="text-xs text-gray-600 mb-3 leading-snug">
-                        ¿Qué pose de la escena intelectual actual te saca de quicio? Escúpelo en nuestro muro analógico:
+                        ¿Qué injusticia absurda te atormenta en el asfalto cotidiano de tu vida? Cuélgala aquí:
                     </p>
 
                     <form id="grievanceForm" onsubmit="submitGrievance(event)" class="space-y-2">
-                        <input type="text" id="grievanceAuthor" placeholder="Tu Pseudónimo Cínico" required
-                               class="w-full text-[11px] font-sans p-2 border border-brand-charcoal bg-brand-grayBg focus:outline-none focus:ring-1 focus:ring-brand-red">
-                        <textarea id="grievanceText" rows="2" placeholder="Ej: Un crítico usó el término 'yuxtaposición liminal' para describir una mancha de café en la pared." required
-                                  class="w-full text-xs font-sans p-2 border border-brand-charcoal bg-brand-grayBg focus:outline-none focus:ring-1 focus:ring-brand-red resize-none"></textarea>
+                        <input type="text" id="grievanceAuthor" placeholder="Tu Pseudónimo Exasperado" required
+                               class="w-full text-[11px] font-sans p-2 border border-brand-ink rounded bg-brand-paper focus:outline-none focus:ring-1 focus:ring-brand-red">
+                        <textarea id="grievanceText" rows="2" placeholder="Ej: El de la moto de reparto me miró feo y cuestioné mi árbol genealógico durante tres cruces." required
+                                  class="w-full text-xs font-sans p-2 border border-brand-ink rounded bg-brand-paper focus:outline-none focus:ring-1 focus:ring-brand-red resize-none"></textarea>
                         <button type="submit" 
-                                class="w-full bg-brand-charcoal hover:bg-brand-red text-white font-display font-black py-1.5 text-[11px] tracking-wider transition-colors uppercase">
-                            Clavar en el Manifiesto de Protesta
+                                class="w-full bg-brand-red hover:bg-brand-charcoal text-white font-sans font-bold py-1.5 rounded text-[11px] tracking-wider transition-colors uppercase">
+                            Clavar en el Muro de la Vergüenza
                         </button>
                     </form>
 
+                    <!-- Grievances Feed (rendered dynamically) -->
                     <div class="mt-4 border-t border-gray-200 pt-3 max-h-56 overflow-y-auto space-y-3 pr-1" id="grievanceFeed">
-                        </div>
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- Satirical Horoscope Card -->
+                <div class="border border-brand-ink rounded p-4 bg-brand-paper relative">
+                    <div class="absolute -top-3 left-4 bg-brand-ink text-brand-yellow text-[9px] font-sans font-bold px-2 py-0.5 rounded uppercase">
+                        Oráculo de la M-30
+                    </div>
+                    <h4 class="font-display font-bold text-sm mt-1">Predicción según tu Matrícula</h4>
+                    <p class="text-xs text-gray-700 mt-2 font-serif leading-relaxed">
+                        "Si tu matrícula termina en número impar, hoy un peatón que lee un libro físico cruzará lentamente frente a ti haciéndote sentir intelectualmente inferior. No aceleres, lee el prólogo con la mirada."
+                    </p>
                 </div>
 
             </section>
         </div>
     </main>
 
+    <!-- Middle Feature Panel: Art Galery & Interactive Consultorio -->
     <section class="bg-brand-charcoal text-white py-12 mt-12 transition-colors duration-500" id="artisticPanel">
         <div class="container mx-auto px-4 max-w-7xl">
-            <div class="border-b border-zinc-800 pb-6 mb-8 text-center">
-                <span class="text-xs font-display font-black text-brand-red tracking-widest uppercase block mb-1">EXPOSICIÓN EXCLUSIVA</span>
-                <h2 class="font-display text-4xl font-black italic text-white tracking-tighter">GALERÍA DEL CONTRABANDO ESTÉTICO</h2>
+            <div class="border-b border-gray-700 pb-6 mb-8 text-center">
+                <span class="text-xs font-sans font-bold text-brand-yellow tracking-widest uppercase block mb-1">DADAÍSMO URBANO</span>
+                <h2 class="font-display text-4xl font-bold">GALERÍA DE COSAS QUE NO SE MUEVEN</h2>
                 <p class="text-sm font-sans text-gray-400 max-w-xl mx-auto mt-2">
-                    Tres capturas brutales de la condición humana a través del lente de creadores insomnes y rebeldes visuales.
+                    Una exploración poética del reposo absoluto forzado por los motores de combustión interna y la pereza existencial.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-zinc-900 border border-zinc-800 p-6 flex flex-col justify-between hover:border-brand-red transition-all duration-300">
+                <!-- Gallery Item 1 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col justify-between hover:border-brand-yellow transition-all duration-300">
                     <div>
-                        <div class="h-48 overflow-hidden mb-4 border border-zinc-700">
-                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" 
-                                 alt="Luces estroboscópicas concierto" 
-                                 class="w-full h-full object-cover filter grayscale contrast-150 hover:scale-105 transition-transform duration-500">
+                        <div class="h-40 rounded overflow-hidden mb-4 border border-gray-700">
+                            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=80" 
+                                 alt="El Cono del Olvido" 
+                                 class="w-full h-full object-cover filter grayscale contrast-125 hover:scale-105 transition-transform duration-500">
                         </div>
-                        <h4 class="font-display font-black text-lg text-brand-red uppercase">"La Luz que Ciega al Ídolo"</h4>
-                        <p class="text-xs text-gray-400 font-sans mt-1">Fotografía analógica de concierto. Berlín, 2024.</p>
-                        <p class="text-sm text-zinc-300 mt-3 font-serif italic">
-                            Un fogonazo de luces de neón captura el momento exacto en que el bajista olvida la partitura y empieza a improvisar sobre el abismo sónico de la sala.
+                        <h4 class="font-sans font-bold text-lg text-brand-yellow">"El Cono del Olvido"</h4>
+                        <p class="text-xs text-gray-400 font-sans mt-1">Instalación efímera. Plástico y soledad.</p>
+                        <p class="text-sm text-gray-300 mt-3 font-serif italic">
+                            Un cono de tráfico colocado en mitad de la acera sin obras adyacentes obliga a 14,000 peatones a reconfigurar su trayectoria vital. Nadie pregunta por qué está ahí; es simplemente ley.
                         </p>
                     </div>
-                    <button onclick="playPerfectHorn(120, 'triangle', 0.4)" class="mt-4 text-xs font-display font-black text-brand-red uppercase hover:underline text-left flex items-center gap-1 tracking-wider">
-                        🔊 Escuchar estática del concierto
+                    <button onclick="playPerfectHorn(120, 'triangle', 0.4)" class="mt-4 text-xs font-sans text-brand-yellow uppercase hover:underline text-left flex items-center gap-1">
+                        🔊 Escuchar zumbido del cono
                     </button>
                 </div>
 
-                <div class="bg-zinc-900 border border-zinc-800 p-6 flex flex-col justify-between hover:border-brand-red transition-all duration-300">
+                <!-- Gallery Item 2 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col justify-between hover:border-brand-yellow transition-all duration-300">
                     <div>
-                        <div class="h-48 overflow-hidden mb-4 border border-zinc-700">
-                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=600&q=80" 
-                                 alt="Manos manchadas de pintura artística" 
-                                 class="w-full h-full object-cover filter brightness-90 contrast-125">
+                        <div class="h-40 rounded overflow-hidden mb-4 border border-gray-700">
+                            <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=600&q=80" 
+                                 alt="La Parada Fantasma" 
+                                 class="w-full h-full object-cover filter grayscale contrast-150 mix-blend-lighten">
                         </div>
-                        <h4 class="font-display font-black text-lg text-brand-red uppercase">"Manos Cómplices"</h4>
-                        <p class="text-xs text-gray-400 font-sans mt-1">Instalación y performance matérica.</p>
-                        <p class="text-sm text-zinc-300 mt-3 font-serif italic">
-                            La pintura acrílica seca bajo las uñas del creador es el verdadero trofeo. El lienzo final es secundario; la piel manchada constituye la obra de arte viva.
+                        <h4 class="font-sans font-bold text-lg text-brand-yellow">"La Parada Fantasma"</h4>
+                        <p class="text-xs text-gray-400 font-sans mt-1">Performance permanente.</p>
+                        <p class="text-sm text-gray-300 mt-3 font-serif italic">
+                            Esperar a un autobús cuya línea fue dada de baja en 2012 es el mayor acto de resistencia conceptual del ciudadano moderno. Los participantes informan de una gran paz mental y desarrollo espiritual.
                         </p>
                     </div>
-                    <button onclick="playPerfectHorn(220, 'sawtooth', 0.3)" class="mt-4 text-xs font-display font-black text-brand-red uppercase hover:underline text-left flex items-center gap-1 tracking-wider">
-                        🔊 Escuchar rascado del lienzo
+                    <button onclick="playPerfectHorn(220, 'sawtooth', 0.3)" class="mt-4 text-xs font-sans text-brand-yellow uppercase hover:underline text-left flex items-center gap-1">
+                        🔊 Escuchar el motor espectral
                     </button>
                 </div>
 
-                <div class="bg-zinc-900 border border-zinc-800 p-6 flex flex-col justify-between hover:border-brand-red transition-all duration-300">
+                <!-- Gallery Item 3: Consultorio Astrológico Interactive Web -->
+                <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col justify-between hover:border-brand-yellow transition-all duration-300">
                     <div>
-                        <div class="h-48 overflow-hidden mb-4 border border-zinc-700">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" 
-                                 alt="Sala de cine oscura neón" 
-                                 class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
+                        <span class="bg-brand-red text-white text-[9px] font-sans font-bold px-2 py-0.5 rounded uppercase tracking-wider">MÓDULO INTERACTIVO</span>
+                        <h4 class="font-sans font-bold text-lg text-brand-yellow mt-2">Consultorio Astrológico-Vial</h4>
+                        <p class="text-xs text-gray-400 font-sans mt-1">Pregúntale al Gurú del Paragolpes</p>
+                        
+                        <div class="mt-4 space-y-3 text-brand-charcoal">
+                            <select id="consultorType" class="w-full text-xs font-sans p-2 rounded bg-white focus:outline-none">
+                                <option value="motorista">Soy Motorista Arrepentido</option>
+                                <option value="peaton">Soy Peatón Indeciso</option>
+                                <option value="conductor">Soy Conductor con Ansia de Velocidad</option>
+                                <option value="patinete">Usuario de Patinete Eléctrico Existencial</option>
+                            </select>
+                            <input type="text" id="consultorQuestion" placeholder="Escribe tu duda urbana..." 
+                                   class="w-full text-xs font-sans p-2 rounded bg-white focus:outline-none">
                         </div>
-                        <h4 class="font-display font-black text-lg text-brand-red uppercase">"La Última Fila del Cine Nou"</h4>
-                        <p class="text-xs text-gray-400 font-sans mt-1">Ensayo visual de arquitectura de escape.</p>
-                        <p class="text-sm text-zinc-300 mt-3 font-serif italic">
-                            Butacas de terciopelo gastado cobijan a almas solitarias que huyen de la tiranía del sol de la tarde para sumergirse en historias filmadas en blanco y negro por cineastas franceses suicidas.
-                        </p>
                     </div>
-                    <button onclick="playPerfectHorn(330, 'sine', 0.3)" class="mt-4 text-xs font-display font-black text-brand-red uppercase hover:underline text-left flex items-center gap-1 tracking-wider">
-                        🔊 Escuchar zumbido de sala vacía
-                    </button>
+                    <div>
+                        <button onclick="askOracle()" class="mt-4 w-full bg-brand-yellow text-brand-charcoal hover:bg-white font-sans font-bold py-2 rounded text-xs uppercase tracking-wider transition-colors">
+                            Obtener Sentencia Kármica
+                        </button>
+                        <div id="oracleAnswerBox" class="hidden mt-3 p-3 bg-brand-charcoal border border-gray-700 rounded text-xs font-serif text-gray-300 italic text-center leading-relaxed">
+                            <!-- JS Filled -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="articleModal" class="fixed inset-0 bg-brand-charcoal/90 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
-        <div class="bg-brand-paper max-w-2xl w-full border-4 border-brand-charcoal p-6 relative max-h-[85vh] overflow-y-auto">
-            <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-sm uppercase font-display font-black bg-brand-red text-white px-2 py-1 hover:bg-brand-charcoal transition-colors">Cerrar</button>
-            <div id="modalContent">
-                </div>
+    <!-- Custom Modal for Satirical Article Reading -->
+    <div id="articleModal" class="fixed inset-0 bg-brand-charcoal/80 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
+        <div class="bg-brand-paper max-w-2xl w-full rounded-lg border-4 border-brand-ink p-6 relative max-h-[85vh] overflow-y-auto">
+            <!-- Close Button -->
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-brand-charcoal hover:text-brand-red text-xl font-bold font-sans">✕</button>
+            
+            <div class="border-b border-brand-ink pb-4 mb-4">
+                <span id="modalCategory" class="text-xs font-sans font-bold text-brand-red uppercase tracking-widest">ARTÍCULO EXTRAORDINARIO</span>
+                <h3 id="modalTitle" class="font-display font-black text-2xl md:text-3xl text-brand-ink mt-2 leading-tight"></h3>
+                <p id="modalAuthor" class="text-xs text-gray-600 font-sans italic mt-1"></p>
+            </div>
+            
+            <div id="modalBodyText" class="font-serif text-md text-brand-ink leading-relaxed space-y-4">
+                <!-- Filled dynamically -->
+            </div>
+            <div class="mt-8 border-t border-brand-ink pt-4 flex justify-between items-center text-xs text-gray-500 font-sans">
+                <span>Edición de Tráfico Paralizado S.A.</span>
+                <button onclick="closeArticleModal()" class="bg-brand-ink text-white px-3 py-1 uppercase rounded tracking-wider text-[10px]">Cerrar pliego</button>
+            </div>
         </div>
     </div>
 
+    <!-- Web Audio & Core Scripts Matrix -->
     <script>
+        // Web Audio API context placeholder
         let audioCtx = null;
 
         function initAudio() {
@@ -378,139 +454,196 @@
             }
         }
 
-        function playPerfectHorn(frequency, type, duration) {
-            initAudio();
-            if(audioCtx.state === 'suspended') {
-                audioCtx.resume();
+        function playPerfectHorn(freq, type = 'sine', duration = 0.2) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                console.log("Audio Bloqueado o No Soportado.");
             }
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            
-            osc.type = type || 'sine';
-            osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-            
-            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-            
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
-            osc.stop(audioCtx.currentTime + duration);
         }
 
         function triggerHonkCascade() {
-            const pitches = [130, 180, 220, 290, 440];
-            pitches.forEach((p, index) => {
+            const notes = [220, 293.66, 329.63, 440];
+            notes.forEach((freq, idx) => {
                 setTimeout(() => {
-                    playPerfectHorn(p, index % 2 === 0 ? 'sawtooth' : 'triangle', 0.6);
-                }, index * 120);
+                    playPerfectHorn(freq, idx % 2 === 0 ? 'sawtooth' : 'triangle', 0.4);
+                }, idx * 150);
             });
         }
 
-        /* Interactive Widgets Logic */
-        function changeSemaphore(color, frequency, message) {
-            playPerfectHorn(frequency, 'sine', 0.4);
-            document.getElementById('semaphoreMessage').innerText = `"${message}"`;
+        // Live Clock Simulating Chronostasis
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('es-ES') + " [TIEMPO RELATIVIZADO]";
+            document.getElementById('liveClock').innerText = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Theme Shifter (Normal Paper vs Emergency Warning)
+        function toggleTheme() {
+            const body = document.getElementById('mainBody');
+            const btnText = document.getElementById('themeBtnText');
+            const stateText = document.getElementById('transitState');
             
-            // Reset indicators styling
-            document.getElementById('light-red').className = "w-12 h-12 rounded-none bg-zinc-800 border border-zinc-700 flex items-center justify-center transition-all duration-300";
-            document.getElementById('light-yellow').className = "w-12 h-12 rounded-none bg-zinc-800 border border-zinc-700 flex items-center justify-center transition-all duration-300";
-            document.getElementById('light-green').className = "w-12 h-12 rounded-none bg-zinc-800 border border-zinc-700 flex items-center justify-center transition-all duration-300";
-            
-            if(color === 'red') {
-                document.getElementById('light-red').className = "w-12 h-12 rounded-none bg-brand-red border border-white flex items-center justify-center shadow-lg shadow-brand-red/50";
-                document.getElementById('synthToneName').innerText = "BAJO PSICODÉLICO";
-            } else if(color === 'yellow') {
-                document.getElementById('light-yellow').className = "w-12 h-12 rounded-none bg-yellow-500 border border-white flex items-center justify-center shadow-lg shadow-yellow-500/50";
-                document.getElementById('synthToneName').innerText = "VÁLVULA SATURADA";
-            } else if(color === 'green') {
-                document.getElementById('light-green').className = "w-12 h-12 rounded-none bg-emerald-600 border border-white flex items-center justify-center shadow-lg shadow-emerald-600/50";
-                document.getElementById('synthToneName').innerText = "ACOPLE CRUCIAL";
+            if(body.classList.contains('paper-grain')) {
+                body.classList.remove('paper-grain');
+                body.classList.add('bg-red-100');
+                btnText.innerText = "Modo Confort";
+                stateText.innerText = "¡COLAPSO CRÍTICO INTELECTUAL!";
+                playPerfectHorn(180, 'sawtooth', 0.6);
+            } else {
+                body.classList.remove('bg-red-100');
+                body.classList.add('paper-grain');
+                btnText.innerText = "Modo Alarma";
+                stateText.innerText = "Embudo existencial de 15 km";
+                playPerfectHorn(440, 'sine', 0.1);
             }
         }
 
-        function generateAbsurdExcuse() {
-            const input = document.getElementById('excuseBaseInput').value || "No fui";
-            const variants = [
-                `"El peso metafísico del último álbum conceptual de avant-garde alteró mi percepción del espacio-tiempo, impidiéndome cruzar el umbral de mi puerta por razones meramente estéticas y morales."`,
-                `"Me quedé atrapado contemplando la luz cenital reflejada en un charco de lluvia ácida frente al cine. Moverme de ahí hubiese arruinado una composición visual perfecta digna de la Nouvelle Vague."`,
-                `"Un acople inesperado en mis auriculares de alta fidelidad me indujo un trance místico-dadaísta. Mi psicólogo artístico me prohibió exponerme a conversaciones corporativas durante 24 horas."`
-            ];
-            const randomResult = variants[Math.floor(Math.random() * variants.length)];
+        // Semaphore Dynamics
+        function changeSemaphore(color, pitch, text) {
+            // Reset active states
+            ['red', 'yellow', 'green'].forEach(c => {
+                const element = document.getElementById(`light-${c}`);
+                element.style.backgroundColor = '';
+                element.style.borderColor = '';
+            });
             
-            document.getElementById('excuseText').innerText = randomResult;
-            document.getElementById('excuseOutputBox').classList.remove('hidden');
-            playPerfectHorn(600, 'triangle', 0.15);
+            const target = document.getElementById(`light-${color}`);
+            const toneDisplay = document.getElementById('synthToneName');
+            
+            if(color === 'red') {
+                target.style.backgroundColor = '#EF4444';
+                toneDisplay.innerText = "Parada Histórica";
+            } else if(color === 'yellow') {
+                target.style.backgroundColor = '#F59E0B';
+                toneDisplay.innerText = "Ansiedad Intermitente";
+            } else {
+                target.style.backgroundColor = '#10B981';
+                toneDisplay.innerText = "Fuga Utópica";
+            }
+            
+            document.getElementById('semaphoreMessage').innerText = `"${text}"`;
+            playPerfectHorn(pitch, 'triangle', 0.3);
+        }
+
+        // Excuse Generator Matrix
+        const surrealExtensions = [
+            "debido a que una bandada de patinetes eléctricos migratorios bloqueó el paso elevado en formación militar.",
+            "porque entré en una rotonda cuántica y aparecí momentáneamente en los suburbios de Amberes en 1994.",
+            "ya que me quedé contemplando la luz parpadeante del indicador de aceite y comprendí la fragilidad del capitalismo moderno.",
+            "porque un camión cargado de espejos rompió el eje delantero, obligándonos a todos a mirar fijamente nuestros propios rostros de fracaso durante hora y media."
+        ];
+
+        function generateAbsurdExcuse() {
+            const base = document.getElementById('excuseBaseInput').value || "No he llegado a mi hora";
+            const randomExt = surrealExtensions[Math.floor(Math.random() * surrealExtensions.length)];
+            const finalBox = document.getElementById('excuseOutputBox');
+            
+            document.getElementById('excuseText').innerText = `${base}, ${randomExt}`;
+            finalBox.classList.remove('hidden');
+            playPerfectHorn(350, 'sine', 0.15);
         }
 
         function copyExcuseToClipboard() {
-            const text = document.getElementById('excuseText').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Coartada estética copiada al portapapeles.");
+            const txt = document.getElementById('excuseText').innerText;
+            navigator.clipboard.writeText(txt).then(() => {
+                alert("Coartada copiada. Envíela con rostro impasible.");
             });
         }
 
-        /* LocalStorage Pinboard system */
+        // Oracle Wisdom
+        const oracleResponses = [
+            "Su destino está bloqueado por un camión de mudanzas espirituales. No intente adelantar por la derecha.",
+            "El peatón del libro físico tiene razón. Usted es esclavo del octanaje; él es dueño de la página.",
+            "Cambiar de carril de manera compulsiva solo revelará que huye de su propio eje interior.",
+            "Mañana el semáforo estará verde, pero usted ya habrá aprendido a amar la quietud del arcén."
+        ];
+
+        function askOracle() {
+            const q = document.getElementById('consultorQuestion').value;
+            if(!q) return alert("Haga una pregunta válida al parachoques.");
+            
+            const answerBox = document.getElementById('oracleAnswerBox');
+            const resp = oracleResponses[Math.floor(Math.random() * oracleResponses.length)];
+            
+            answerBox.innerText = resp;
+            answerBox.classList.remove('hidden');
+            playPerfectHorn(290, 'sawtooth', 0.4);
+        }
+
+        // Grievances Board (Localstorage persistence)
         function loadGrievances() {
             const feed = document.getElementById('grievanceFeed');
-            const data = JSON.parse(localStorage.getItem('art_grievances') || '[]');
-            feed.innerHTML = data.map(item => `
-                <div class="bg-brand-grayBg p-2 border-b border-brand-charcoal text-xs">
-                    <p class="font-serif italic text-brand-ink">"${item.text}"</p>
-                    <p class="text-right text-[10px] font-display uppercase text-brand-red mt-1">— ${item.author}</p>
+            const local = JSON.parse(localStorage.getItem('traficante_grievances')) || [
+                {author: "NeumáticoQuemado", text: "El conductor de adelante lleva un perro de peluche que me juzga con la mirada."},
+                {author: "TaxistaNietzscheano", text: "La tercera marcha de mi coche rasca igual que mi alma al recordar los lunes."}
+            ];
+            
+            feed.innerHTML = local.map(g => `
+                <div class="bg-brand-paper/70 p-2 rounded border border-gray-200 font-sans text-xs">
+                    <span class="font-bold text-brand-red">@${g.author}:</span>
+                    <p class="text-gray-700 italic mt-0.5">"${g.text}"</p>
                 </div>
             `).join('');
         }
 
         function submitGrievance(e) {
             e.preventDefault();
-            const author = document.getElementById('grievanceAuthor').value;
+            const auth = document.getElementById('grievanceAuthor').value;
             const text = document.getElementById('grievanceText').value;
             
-            const data = JSON.parse(localStorage.getItem('art_grievances') || '[]');
-            data.unshift({ author, text });
-            localStorage.setItem('art_grievances', JSON.stringify(data.slice(0, 15))); // Limit to last 15
+            const local = JSON.parse(localStorage.getItem('traficante_grievances')) || [];
+            local.unshift({author: auth, text: text});
+            localStorage.setItem('traficante_grievances', JSON.stringify(local.slice(0, 15)));
             
-            document.getElementById('grievanceForm').reset();
+            document.getElementById('grievanceAuthor').value = '';
+            document.getElementById('grievanceText').value = '';
+            
             loadGrievances();
-            playPerfectHorn(180, 'sawtooth', 0.25);
+            playPerfectHorn(150, 'sine', 0.3);
         }
 
-        /* Modal Articles */
-        function openArticleModal(title, meta, fullText) {
-            const modal = document.getElementById('articleModal');
-            const content = document.getElementById('modalContent');
-            content.innerHTML = `
-                <span class="text-xs font-display font-black text-brand-red uppercase tracking-widest block mb-1">CULTURA & CONTRABANDO</span>
-                <h2 class="font-display font-black text-2xl md:text-4xl text-brand-charcoal tracking-tight mb-2 uppercase">${title}</h2>
-                <p class="text-xs text-gray-500 font-display uppercase tracking-wider mb-4 border-b border-gray-300 pb-2">${meta}</p>
-                <p class="font-serif text-sm md:text-base leading-relaxed text-gray-800 whitespace-pre-line">${fullText}</p>
-            `;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+        // Modal triggers
+        function openArticleModal(title, author, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalAuthor').innerText = author;
+            document.getElementById('modalBodyText').innerHTML = `<p>${text}</p>`;
+            document.getElementById('articleModal').classList.remove('hidden');
+            initAudio();
         }
 
         function closeArticleModal() {
             document.getElementById('articleModal').classList.add('hidden');
-            document.body.style.overflow = '';
         }
 
-        /* Clock & Live Trance Updates */
-        setInterval(() => {
-            const now = new Date();
-            document.getElementById('liveClock').innerText = `FREC. GLOBAL: ${now.toLocaleTimeString('es-ES')} | AC-DC 220V`;
-        }, 1000);
-
-        function toggleTheme() {
-            const body = document.getElementById('mainBody');
-            body.classList.toggle('bg-brand-paper');
-            body.classList.toggle('bg-zinc-100');
-            playPerfectHorn(320, 'sine', 0.1);
+        function triggerVisualChaos() {
+            const artCenter = document.getElementById('artVisualCenter');
+            artCenter.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.5})`;
+            playPerfectHorn(Math.random() * 600 + 100, 'sawtooth', 0.1);
         }
 
-        window.onload = () => {
+        // Init bootstrap
+        window.onload = function() {
             loadGrievances();
-        };
+        }
     </script>
 </body>
 </html>
