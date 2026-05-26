@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>DIARIO EL TRAFICANTE — Edición Suburbio</title>
+<title>DIARIO EL TRAFICANTE — Periodismo Lento</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -24,12 +24,12 @@ display:['Playfair Display','serif']
 },
 colors:{
 brand:{
-yellow:'#FFD500',
-orange:'#ff5e00',
-red:'#ff2d2d',
-paper:'#e7dfd1',
-ink:'#111111',
-charcoal:'#050505'
+yellow:'#FFC700',
+orange:'#DD6B20',
+red:'#E53E3E',
+paper:'#F5EFE2',
+ink:'#18181B',
+charcoal:'#0F0F11'
 }
 }
 }
@@ -41,27 +41,26 @@ charcoal:'#050505'
 
 body{
 overflow-x:hidden;
-background:#ece5d8;
-background-image:
-linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px),
-url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1600&auto=format&fit=crop');
-background-size:4px 4px,4px 4px,cover;
-background-attachment:fixed;
 }
 
 .paper-bg{
 background:
-linear-gradient(rgba(255,255,255,.82),rgba(255,255,255,.82)),
-url('https://images.unsplash.com/photo-1529429611270-57e9bcb3fcb9?q=80&w=1600&auto=format&fit=crop');
-background-size:cover;
-background-blend-mode:screen;
+radial-gradient(circle at top left, rgba(255,199,0,.08), transparent 30%),
+radial-gradient(circle at bottom right, rgba(229,62,62,.06), transparent 30%),
+#f8f4ea;
+
+background-image:
+radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0),
+radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+
+background-size:8px 8px;
+background-position:0 0,4px 4px;
 }
 
 .glass{
-background:rgba(255,255,255,0.45);
-backdrop-filter:blur(16px);
-border:1px solid rgba(0,0,0,0.12);
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.08);
 }
 
 .marquee{
@@ -73,35 +72,20 @@ animation:marquee 30s linear infinite;
 100%{transform:translateX(-100%)}
 }
 
-.gallery-card{
-transition:all .4s ease;
-transform:rotate(-1deg);
-}
-
-.gallery-card:nth-child(even){
-transform:rotate(1deg);
-}
-
-.gallery-card:hover{
-transform:rotate(0deg) scale(1.02);
-}
-
 .gallery-card:hover img{
 transform:scale(1.08);
-filter:contrast(1.15) saturate(1.1);
 }
 
 .gallery-card img{
-transition:transform 1.4s ease;
-filter:grayscale(.1) contrast(1.08);
+transition:transform 1.2s ease;
 }
 
 .noise{
 position:fixed;
 inset:0;
 pointer-events:none;
-opacity:.08;
-background-image:url("https://montevideo.gub.uy/areas-tematicas/cultura-y-tiempo-libre/museo-de-bellas-artes-juan-manuel-blanesp");
+opacity:.03;
+background-image:url("https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200&auto=format&fit=crop");
 background-size:cover;
 mix-blend-mode:multiply;
 }
@@ -110,50 +94,17 @@ mix-blend-mode:multiply;
 overflow:hidden;
 }
 
-h1,h2,h3,h4{
-letter-spacing:-0.03em;
-}
-
-.border-zinc-300{
-border-color:#1a1a1a !important;
-}
-
 ::-webkit-scrollbar{
 width:10px;
 }
 
 ::-webkit-scrollbar-track{
-background:#000;
+background:#111;
 }
 
 ::-webkit-scrollbar-thumb{
-background:#FFD500;
+background:#FFC700;
 border-radius:10px;
-}
-
-.tape{
-position:absolute;
-width:120px;
-height:30px;
-background:rgba(255,255,255,.3);
-backdrop-filter:blur(3px);
-transform:rotate(-8deg);
-top:10px;
-left:-20px;
-}
-
-.grunge{
-position:relative;
-}
-
-.grunge::after{
-content:'';
-position:absolute;
-inset:0;
-background:url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1200&auto=format&fit=crop');
-mix-blend-mode:multiply;
-opacity:.08;
-pointer-events:none;
 }
 
 </style>
@@ -165,12 +116,12 @@ pointer-events:none;
 
 <!-- TOP BAR -->
 
-<div class="bg-black border-b border-zinc-800 text-brand-yellow text-xs uppercase tracking-[0.25em] font-bold font-sans px-4 py-2 flex justify-between items-center">
+<div class="bg-brand-charcoal border-b border-zinc-800 text-brand-yellow text-xs uppercase tracking-[0.25em] font-bold font-sans px-4 py-2 flex justify-between items-center">
 
 <div>
-TRANSMISIÓN CALLEJERA:
+TRAFICANDO IDEAS:
 <span class="text-brand-red animate-pulse" id="trafficState">
-Ansiedad Colectiva Detectada
+Embudo Existencial Detectado
 </span>
 </div>
 
@@ -181,7 +132,7 @@ Ansiedad Colectiva Detectada
 onclick="toggleTheme()"
 class="bg-brand-yellow text-black px-3 py-1 rounded font-black hover:scale-105 transition"
 >
-Modo Disturbio
+Modo Alarma
 </button>
 </div>
 
@@ -191,12 +142,10 @@ Modo Disturbio
 
 <header class="max-w-7xl mx-auto px-4 py-10 text-center">
 
-<div class="border-b-4 border-double border-black pb-6 relative">
+<div class="border-b-4 border-double border-black pb-6">
 
-<div class="tape"></div>
-
-<p class="font-sans uppercase tracking-[0.3em] text-xs text-zinc-700 italic">
-“Noticias para gente que ya explotó mentalmente”
+<p class="font-sans uppercase tracking-[0.3em] text-xs text-zinc-600 italic">
+“La verdad avanza a velocidad de rotonda”
 </p>
 
 <h1
@@ -206,14 +155,14 @@ class="font-display text-6xl md:text-8xl font-black uppercase cursor-pointer lea
 DIARIO EL TRAFICANTE
 </h1>
 
-<div class="flex flex-col md:flex-row justify-between items-center mt-6 text-xs font-sans uppercase tracking-widest text-zinc-700">
+<div class="flex flex-col md:flex-row justify-between items-center mt-6 text-xs font-sans uppercase tracking-widest text-zinc-600">
 
 <div>
-Subsuelo cultural desde 1998
+Fundado en el gran atasco del 98
 </div>
 
-<div class="bg-brand-red text-white px-3 py-1 rounded font-black animate-pulse">
-EDICIÓN DISTORSIONADA
+<div class="bg-brand-yellow text-black px-3 py-1 rounded font-black animate-bounce">
+EDICIÓN PARALIZADA
 </div>
 
 <div id="todayDate"></div>
@@ -229,21 +178,21 @@ EDICIÓN DISTORSIONADA
 <section class="bg-black text-white border-y border-zinc-700 overflow-hidden flex py-3">
 
 <div class="bg-brand-red shrink-0 px-4 font-black uppercase text-xs flex items-center">
-ÚLTIMO RUIDO
+ÚLTIMO EMBOTELLAMIENTO
 </div>
 
 <div class="overflow-hidden w-full">
 <div class="marquee whitespace-nowrap font-sans uppercase text-xs tracking-wider flex gap-16">
 
-<span>🎨 Mural clandestino aparece sobre cartel político.</span>
+<span>🚗 Un conductor salió jubilado del túnel central.</span>
 
-<span>🚧 Vecinos convierten bache en instalación artística.</span>
+<span>🧠 Psicólogos recomiendan respirar antes de insultar al GPS.</span>
 
-<span>🧠 Colapso emocional colectivo en hora pico.</span>
+<span>🚦 Semáforo en rojo desde 2017 ahora es patrimonio histórico.</span>
 
-<span>🎭 Performance callejera detiene tránsito y gana aplausos.</span>
+<span>🎭 Performance artística bloquea avenida y nadie nota diferencia.</span>
 
-<span>📷 Fotógrafo documenta la estética de la mugre urbana.</span>
+<span>☕ El mate ya tarda más en enfriarse que el tráfico en avanzar.</span>
 
 </div>
 </div>
@@ -263,24 +212,24 @@ EDICIÓN DISTORSIONADA
 <div class="border-b border-black pb-6">
 
 <span class="font-sans text-xs uppercase tracking-[0.3em] text-brand-red font-black">
-● SUBCULTURA
+● OPINIÓN
 </span>
 
 <h3 class="font-display text-2xl font-black leading-tight mt-2 hover:text-brand-orange transition">
-La estética del abandono como identidad urbana
+La metafísica del embrague y la tristeza urbana
 </h3>
 
 <p class="text-sm text-zinc-700 mt-3 leading-relaxed">
-Paredes rotas, afiches arrancados y humedad: la nueva arquitectura emocional.
+Presionar el embrague lentamente es aceptar que jamás tuvimos el control del tránsito emocional.
 </p>
 
 </div>
 
-<div class="gallery-card bg-white border border-zinc-300 rounded-2xl overflow-hidden shadow-2xl grunge">
+<div class="gallery-card bg-white border border-zinc-300 rounded-2xl overflow-hidden shadow-lg">
 
 <div class="h-64 overflow-hidden">
 <img
-src="https://sujetos.uy/2013/02/06/el-muro-de-febrero/"
+src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?q=80&w=1200&auto=format&fit=crop"
 class="w-full h-full object-cover"
 />
 </div>
@@ -288,15 +237,15 @@ class="w-full h-full object-cover"
 <div class="p-5">
 
 <span class="font-sans uppercase text-[10px] tracking-[0.3em] text-brand-orange font-black">
-ARTE CALLEJERO
+INSTALACIÓN URBANA
 </span>
 
 <h4 class="font-display text-2xl font-black mt-2">
-“Grafiti para sobrevivir”
+“El Cono del Olvido”
 </h4>
 
 <p class="text-sm text-zinc-700 mt-3 leading-relaxed">
-Colectivos anónimos llenan la ciudad de mensajes absurdos y poéticos.
+Un cono abandonado obliga a miles de peatones a replantearse su trayectoria vital.
 </p>
 
 </div>
@@ -307,7 +256,7 @@ Colectivos anónimos llenan la ciudad de mensajes absurdos y poéticos.
 
 <div class="h-64 overflow-hidden">
 <img
-src="https://sujetos.uy/2013/02/06/el-muro-de-febrero/"
+src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
 class="w-full h-full object-cover"
 />
 </div>
@@ -315,15 +264,15 @@ class="w-full h-full object-cover"
 <div class="p-5">
 
 <span class="font-sans uppercase text-[10px] tracking-[0.3em] text-brand-yellow font-black">
-FOTOGRAFÍA SOCIAL
+MUSEO DEL TRÁNSITO
 </span>
 
 <h4 class="font-display text-2xl font-black mt-2">
-“La esquina eterna”
+“La parada fantasma”
 </h4>
 
 <p class="text-sm text-zinc-400 mt-3 leading-relaxed">
-Retratos nocturnos de jóvenes que convierten la calle en refugio emocional.
+Personas esperando un autobús eliminado hace 10 años como acto de resistencia poética.
 </p>
 
 </div>
@@ -341,17 +290,17 @@ Retratos nocturnos de jóvenes que convierten la calle en refugio emocional.
 <div class="flex justify-between items-center mb-4">
 
 <span class="bg-brand-red text-white px-3 py-1 text-xs uppercase tracking-[0.3em] font-black rounded">
-PORTADA URBANA
+PORTADA CONCEPTUAL
 </span>
 
 <span class="text-xs uppercase font-sans text-zinc-500">
-Edición underground
+Lectura a velocidad de ralentí
 </span>
 
 </div>
 
 <h2 class="font-display text-4xl md:text-6xl font-black leading-none hover:text-brand-orange transition cursor-pointer">
-EL CAOS DE LA CIUDAD YA ES UNA FORMA DE ARTE
+SE DECLARA EL ATASCO EMOCIONAL COMO PATRIMONIO CULTURAL
 </h2>
 
 <div
@@ -360,28 +309,28 @@ class="mt-6 bg-black rounded-3xl overflow-hidden relative cursor-pointer h-[420p
 >
 
 <img
-src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1600&auto=format&fit=crop"
-class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-[3000ms]"
+src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1600&auto=format&fit=crop"
+class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition duration-[3000ms]"
 >
 
 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
 
 <div class="absolute top-4 left-4 bg-brand-yellow text-black px-3 py-1 rounded uppercase font-black text-xs">
-ARCHIVO SUBTERRÁNEO
+OBRA INTERACTIVA #041
 </div>
 
 <div class="absolute top-4 right-4 bg-brand-red text-white px-3 py-1 rounded uppercase font-black text-xs animate-pulse">
-PULSA PARA DISTORSIONAR
+PULSA PARA GENERAR CAOS
 </div>
 
 <div class="absolute bottom-8 left-8 max-w-xl">
 
 <h3 class="font-display text-4xl font-black text-white">
-La ciudad grita aunque nadie escuche
+La avenida mental está saturada
 </h3>
 
 <p class="text-zinc-300 mt-3 leading-relaxed">
-Entre neón, humedad y cemento nace una nueva sensibilidad urbana.
+El tráfico ya no ocurre en las calles sino dentro de la cabeza de los conductores.
 </p>
 
 </div>
@@ -389,12 +338,76 @@ Entre neón, humedad y cemento nace una nueva sensibilidad urbana.
 </div>
 
 <p class="text-lg leading-relaxed mt-6 text-zinc-800 first-letter:text-6xl first-letter:font-black first-letter:float-left first-letter:mr-4 first-letter:text-brand-orange">
-El deterioro urbano dejó de ser un problema para convertirse en una identidad visual colectiva.
+Tras décadas de investigaciones absurdas y colisiones filosóficas, el gobierno reconoció oficialmente el agotamiento existencial causado por los embotellamientos.
 </p>
 
 </div>
 
-<!-- GALLERY -->
+<!-- SEMAFORO -->
+
+<div class="glass rounded-3xl p-8 bg-white/60 shadow-2xl border border-white/40">
+
+<div class="flex items-center gap-3 mb-6">
+
+<div class="w-3 h-3 rounded-full bg-brand-red animate-ping"></div>
+
+<h3 class="font-sans uppercase tracking-[0.3em] font-black text-lg">
+SEMÁFORO EXISTENCIAL
+</h3>
+
+</div>
+
+<div class="grid md:grid-cols-[120px_1fr] gap-8 items-center">
+
+<div class="bg-black rounded-[40px] p-4 flex flex-col gap-4 shadow-inner">
+
+<button
+id="redLight"
+onclick="setLight('red')"
+class="w-20 h-20 rounded-full bg-red-700 hover:scale-105 transition"
+></button>
+
+<button
+id="yellowLight"
+onclick="setLight('yellow')"
+class="w-20 h-20 rounded-full bg-yellow-700 hover:scale-105 transition"
+></button>
+
+<button
+id="greenLight"
+onclick="setLight('green')"
+class="w-20 h-20 rounded-full bg-green-700 hover:scale-105 transition"
+></button>
+
+</div>
+
+<div class="bg-white rounded-2xl border border-zinc-300 p-6">
+
+<div class="text-xs uppercase tracking-[0.3em] font-sans font-black text-brand-orange">
+DICTAMEN FILOSÓFICO
+</div>
+
+<p
+id="lightText"
+class="text-2xl font-display leading-snug mt-4"
+>
+“La inmovilidad garantiza que no atropellarás tus propios principios.”
+</p>
+
+<button
+onclick="hornCascade()"
+class="mt-6 bg-black text-white px-4 py-2 rounded-xl text-xs uppercase tracking-[0.2em] font-black hover:bg-brand-red transition"
+>
+Activar Bocinas Sinfónicas
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GALLERY GRID -->
 
 <section>
 
@@ -403,11 +416,11 @@ El deterioro urbano dejó de ser un problema para convertirse en una identidad v
 <div>
 
 <span class="font-sans uppercase tracking-[0.3em] text-xs font-black text-brand-red">
-ARCHIVO VISUAL
+DADAÍSMO URBANO
 </span>
 
 <h3 class="font-display text-4xl font-black">
-Galería del Suburbio
+Galería del Caos Moderno
 </h3>
 
 </div>
@@ -420,7 +433,7 @@ Galería del Suburbio
 
 <div class="h-72 overflow-hidden">
 <img
-src="https://www.streetartlatam.com/articulo/los-murales-que-transforman-las-calles-de-montevideo/935"
+src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop"
 class="w-full h-full object-cover"
 />
 </div>
@@ -428,11 +441,11 @@ class="w-full h-full object-cover"
 <div class="p-6">
 
 <h4 class="font-display text-3xl font-black">
-“Noches eléctricas”
+“Noches de Rotonda”
 </h4>
 
 <p class="mt-3 text-zinc-700 leading-relaxed">
-La ansiedad urbana transformada en fotografía callejera.
+Serie fotográfica sobre ciudadanos atrapados emocionalmente entre carriles.
 </p>
 
 </div>
@@ -443,7 +456,7 @@ La ansiedad urbana transformada en fotografía callejera.
 
 <div class="h-72 overflow-hidden">
 <img
-src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop"
+src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1200&auto=format&fit=crop"
 class="w-full h-full object-cover"
 />
 </div>
@@ -451,11 +464,11 @@ class="w-full h-full object-cover"
 <div class="p-6">
 
 <h4 class="font-display text-3xl font-black text-brand-yellow">
-“Ruido visual”
+“Neón y ansiedad”
 </h4>
 
 <p class="mt-3 text-zinc-400 leading-relaxed">
-Luces, carteles y caos convertidos en poesía visual contemporánea.
+Exploración visual del ruido mental producido por las ciudades hiperiluminadas.
 </p>
 
 </div>
@@ -475,21 +488,21 @@ Luces, carteles y caos convertidos en poesía visual contemporánea.
 <div class="bg-white rounded-3xl border border-zinc-300 p-6 shadow-lg">
 
 <span class="font-sans uppercase tracking-[0.3em] text-[10px] font-black text-brand-red">
-GENERADOR DE COARTADAS
+GENERADOR DE EXCUSAS
 </span>
 
 <h3 class="font-display text-3xl font-black mt-3">
-¿Desapareciste?
+¿Llegás tarde?
 </h3>
 
 <p class="text-sm text-zinc-600 mt-2">
-Convertimos caos personal en excusa artística.
+Transformamos tus errores en poesía urbana.
 </p>
 
 <input
 id="excuseInput"
 type="text"
-placeholder="Ej: Perdí el bondi..."
+placeholder="Ej: Me quedé dormido..."
 class="w-full mt-5 border border-zinc-300 rounded-xl p-3 text-sm"
 />
 
@@ -497,7 +510,7 @@ class="w-full mt-5 border border-zinc-300 rounded-xl p-3 text-sm"
 onclick="generateExcuse()"
 class="w-full mt-4 bg-brand-orange text-white py-3 rounded-xl uppercase tracking-[0.2em] text-xs font-black hover:bg-black transition"
 >
-Fabricar Excusa
+Generar Coartada
 </button>
 
 <div
@@ -511,7 +524,7 @@ class="hidden mt-5 bg-brand-yellow/20 border border-brand-yellow rounded-2xl p-4
 
 <div class="h-80 overflow-hidden">
 <img
-src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1200&auto=format&fit=crop"
+src="https://images.unsplash.com/photo-1529429611270-57e9bcb3fcb9?q=80&w=1200&auto=format&fit=crop"
 class="w-full h-full object-cover opacity-70"
 />
 </div>
@@ -519,22 +532,22 @@ class="w-full h-full object-cover opacity-70"
 <div class="p-6">
 
 <span class="font-sans uppercase tracking-[0.3em] text-[10px] font-black text-brand-yellow">
-ORÁCULO CALLEJERO
+ORÁCULO VIAL
 </span>
 
 <h3 class="font-display text-3xl font-black mt-3">
-Profecía del Barrio
+Predicción Urbana
 </h3>
 
 <p id="oracleText" class="text-zinc-300 mt-4 leading-relaxed">
-Hoy escucharás una conversación ajena que cambiará tu percepción estética.
+Hoy un peatón leerá un libro frente a vos haciéndote sentir intelectualmente inferior.
 </p>
 
 <button
 onclick="newOracle()"
 class="mt-5 bg-brand-yellow text-black px-4 py-3 rounded-xl uppercase tracking-[0.2em] text-xs font-black hover:bg-white transition"
 >
-Otra Profecía
+Nueva Profecía
 </button>
 
 </div>
@@ -547,6 +560,48 @@ Otra Profecía
 
 </main>
 
+<!-- MODAL -->
+
+<div
+id="modal"
+class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-6 backdrop-blur-sm"
+>
+
+<div class="bg-brand-paper max-w-3xl rounded-3xl overflow-hidden shadow-2xl">
+
+<img
+id="modalImage"
+src=""
+class="w-full h-[400px] object-cover"
+>
+
+<div class="p-8">
+
+<h3
+id="modalTitle"
+class="font-display text-5xl font-black"
+></h3>
+
+<p
+id="modalDescription"
+class="mt-4 text-zinc-700 leading-relaxed"
+></p>
+
+<button
+onclick="closeModal()"
+class="mt-6 bg-black text-white px-6 py-3 rounded-xl uppercase tracking-[0.2em] text-xs font-black"
+>
+Cerrar
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
 <footer class="bg-black text-white mt-20 border-t-4 border-brand-yellow">
 
 <div class="max-w-7xl mx-auto px-4 py-12 text-center">
@@ -556,11 +611,11 @@ EL DIARIO EL TRAFICANTE
 </h3>
 
 <p class="max-w-2xl mx-auto mt-5 text-zinc-400 text-sm leading-relaxed">
-Periodismo callejero, arte visual y ansiedad colectiva.
+Todo el contenido es ficticio, satírico y emocionalmente congestionado.
 </p>
 
 <p class="mt-6 text-xs uppercase tracking-[0.3em] text-zinc-600 font-sans">
-VERSIÓN SUBURBIO 9.0
+Versión 6.0 — Ralentí Cinemático
 </p>
 
 </div>
@@ -603,6 +658,33 @@ osc.stop(audioCtx.currentTime+duration)
 
 }
 
+function hornCascade(){
+
+const notes=[220,330,440,550]
+
+notes.forEach((n,i)=>{
+setTimeout(()=>{
+playHorn(n,'triangle',.25)
+},i*150)
+})
+
+}
+
+const states = [
+"Embudo Existencial Detectado",
+"Semáforos en huelga",
+"Niebla filosófica intensa",
+"Tránsito emocional saturado",
+"Carril izquierdo bloqueado por ansiedad"
+]
+
+setInterval(()=>{
+
+document.getElementById('trafficState').textContent =
+states[Math.floor(Math.random()*states.length)]
+
+},6000)
+
 function triggerChaos(){
 
 playHorn(120,'sawtooth',.5)
@@ -618,11 +700,95 @@ duration:300
 
 }
 
+const excuses = [
+
+"Un semáforo emocional me obligó a reflexionar sobre mi infancia.",
+
+"Una rotonda conceptual me atrapó durante 45 minutos.",
+
+"Mi GPS entró en crisis existencial y decidió desviarme hacia la melancolía.",
+
+"Una bandada de palomas bloqueó mi percepción temporal.",
+
+"El tráfico me hizo cuestionar la fragilidad de la condición humana."
+
+]
+
+function generateExcuse(){
+
+const input = document.getElementById('excuseInput').value
+
+const random =
+excuses[Math.floor(Math.random()*excuses.length)]
+
+const output =
+input ?
+`Respecto a "${input}": ${random}`
+:
+random
+
+const box = document.getElementById('excuseBox')
+
+box.innerHTML = output
+box.classList.remove('hidden')
+
+playHorn(500,'triangle',.2)
+
+}
+
+const oracles = [
+
+"Hoy esquivarás una discusión innecesaria en un estacionamiento.",
+
+"Un conductor tocará bocina y despertará tu lado artístico.",
+
+"Tu carril emocional se encuentra temporalmente congestionado.",
+
+"La ansiedad urbana disminuirá después del tercer mate."
+
+]
+
+function newOracle(){
+
+document.getElementById('oracleText').textContent =
+oracles[Math.floor(Math.random()*oracles.length)]
+
+playHorn(200,'sine',.3)
+
+}
+
+function setLight(color){
+
+const text = document.getElementById('lightText')
+
+if(color==='red'){
+text.innerHTML = "“Detente. La inmovilidad también es una forma de resistencia.”"
+playHorn(180,'sawtooth',.4)
+}
+
+if(color==='yellow'){
+text.innerHTML = "“Dudá. La incertidumbre mantiene vivo al conductor.”"
+playHorn(280,'triangle',.3)
+}
+
+if(color==='green'){
+text.innerHTML = "“Avanza. Aunque el destino sea una ilusión.”"
+playHorn(440,'sine',.2)
+}
+
+}
+
 function toggleTheme(){
 
 document.body.classList.toggle('bg-black')
 document.body.classList.toggle('text-white')
 
+}
+
+function closeModal(){
+document.getElementById('modal').classList.add('hidden')
+document.getElementById('modal').classList.remove('flex')
+document.body.classList.remove('modal-open')
 }
 
 const today = new Date()
