@@ -10,12 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
- <div class="my-4">
-    <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80" 
-         alt="Atasco masivo surrealista" 
-         class="w-full h-64 object-cover filter grayscale contrast-125 border-2 border-brand-ink rounded shadow-md">
-    <p class="text-xs italic text-gray-600 mt-1 font-sans border-b border-brand-ink pb-1">Fig 1. Vista panorámica de la resignación urbana a las 8:30 AM.</p>
-</div>   
+   
     <script>
         tailwind.config = {
             theme: {
@@ -121,7 +116,7 @@
                 <span>🚦 El semáforo de la Calle Mayor cumple 8 meses en rojo: los peatones declaran el paso de cebra "Estado Independiente".</span>
                 <span>💡 Gobierno propone sustituir el asfalto por colchonetas elásticas para agilizar el tráfico por saltos.</span>
                 <span>🧠 Psicólogos advierten: Insultar al volante ya no alivia el estrés, recomiendan componer óperas cortas en tercera marcha.</span>
-                <span>🍩 Agujero de la rotonda sur absorbe tres patinetes y un camión de Donuts; los vecinos celebran un festival gastronómico improvisado.</span>
+                <span>🍩 Agujero de la rotonda sur absorbs tres patinetes y un camión de Donuts; los vecinos celebran un festival gastronómico improvisado.</span>
             </div>
         </div>
     </div>
@@ -141,7 +136,7 @@
                     </h3>
                     <p class="text-xs text-gray-600 mt-2 font-sans italic">Por Atanasio Paragolpes</p>
                     <p class="text-sm text-gray-700 mt-3 leading-relaxed">
-                        Presionar el pedal no nos libera, solo retrasa el inminente choque de nuestras frustraciones urbanas...
+                        Presionar el pedal no nos libera, solo retrasa el inminente choque de nuestras frustrations urbanas...
                     </p>
                 </div>
 
@@ -155,6 +150,14 @@
                     <p class="text-sm text-gray-700 mt-2 leading-relaxed">
                         El claxon no grita, canta a la desesperanza del retorno a un hogar que ya no reconocemos.
                     </p>
+                    
+                    <!-- Imagen de Tráfico Saturado con Estética de Prensa -->
+                    <div class="my-4">
+                        <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80" 
+                             alt="Atasco masivo surrealista" 
+                             class="w-full h-44 object-cover filter grayscale contrast-125 border-2 border-brand-ink rounded shadow-md">
+                        <p class="text-[11px] italic text-gray-600 mt-1 font-sans border-b border-brand-ink pb-1">Fig 1. Vista panorámica de la resignación urbana a las 8:30 AM.</p>
+                    </div> 
                 </div>
 
                 <!-- Small Art Feature Box -->
@@ -352,8 +355,10 @@
                 <!-- Gallery Item 1 -->
                 <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col justify-between hover:border-brand-yellow transition-all duration-300">
                     <div>
-                        <div class="bg-gray-800 h-40 rounded flex items-center justify-center text-6xl mb-4 select-none">
-                            🛢️
+                        <div class="h-40 rounded overflow-hidden mb-4 border border-gray-700">
+                            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=80" 
+                                 alt="El Cono del Olvido" 
+                                 class="w-full h-full object-cover filter grayscale contrast-125 hover:scale-105 transition-transform duration-500">
                         </div>
                         <h4 class="font-sans font-bold text-lg text-brand-yellow">"El Cono del Olvido"</h4>
                         <p class="text-xs text-gray-400 font-sans mt-1">Instalación efímera. Plástico y soledad.</p>
@@ -369,8 +374,10 @@
                 <!-- Gallery Item 2 -->
                 <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col justify-between hover:border-brand-yellow transition-all duration-300">
                     <div>
-                        <div class="bg-gray-800 h-40 rounded flex items-center justify-center text-6xl mb-4 select-none">
-                            🏚️
+                        <div class="h-40 rounded overflow-hidden mb-4 border border-gray-700">
+                            <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=600&q=80" 
+                                 alt="La Parada Fantasma" 
+                                 class="w-full h-full object-cover filter grayscale contrast-150 mix-blend-lighten">
                         </div>
                         <h4 class="font-sans font-bold text-lg text-brand-yellow">"La Parada Fantasma"</h4>
                         <p class="text-xs text-gray-400 font-sans mt-1">Performance permanente.</p>
@@ -414,7 +421,7 @@
         </div>
     </section>
 
-    <!-- Custom Modal for Satirical Article Reading (avoiding alert) -->
+    <!-- Custom Modal for Satirical Article Reading -->
     <div id="articleModal" class="fixed inset-0 bg-brand-charcoal/80 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
         <div class="bg-brand-paper max-w-2xl w-full rounded-lg border-4 border-brand-ink p-6 relative max-h-[85vh] overflow-y-auto">
             <!-- Close Button -->
@@ -429,39 +436,16 @@
             <div id="modalBodyText" class="font-serif text-md text-brand-ink leading-relaxed space-y-4">
                 <!-- Filled dynamically -->
             </div>
-
-            <div class="mt-8 border-t border-brand-ink pt-4 flex justify-between items-center">
-                <span class="text-[10px] font-sans text-gray-500 uppercase">Periódico Conceptual El Tráfico © 2026</span>
-                <button onclick="closeArticleModal()" class="bg-brand-charcoal text-white font-sans font-bold px-4 py-1.5 rounded text-xs hover:bg-brand-red transition-colors uppercase">
-                    Cerrar Lectura Atascada
-                </button>
+            <div class="mt-8 border-t border-brand-ink pt-4 flex justify-between items-center text-xs text-gray-500 font-sans">
+                <span>Edición de Tráfico Paralizado S.A.</span>
+                <button onclick="closeArticleModal()" class="bg-brand-ink text-white px-3 py-1 uppercase rounded tracking-wider text-[10px]">Cerrar pliego</button>
             </div>
         </div>
     </div>
 
-    <!-- Simple Custom Toast Alert Box -->
-    <div id="customToast" class="fixed bottom-5 right-5 bg-brand-yellow border-2 border-brand-ink text-brand-ink font-sans px-4 py-3 rounded shadow-lg z-50 hidden max-w-sm transform translate-y-2 transition-transform duration-300">
-        <div class="flex items-center gap-2">
-            <span class="text-lg">📢</span>
-            <span id="toastMessage" class="text-xs font-bold uppercase tracking-wider"></span>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-brand-ink text-brand-paper py-8 border-t-4 border-brand-yellow">
-        <div class="container mx-auto px-4 text-center max-w-7xl space-y-4">
-            <p class="font-display text-2xl font-black uppercase text-brand-yellow">EL DIARIO EL TRÁFICO</p>
-            <p class="text-xs font-sans max-w-md mx-auto text-gray-400">
-                Aviso: Todo el contenido de este sitio web es ficticio, satírico, dadaísta e inventado para aliviar la existencia urbana y fomentar el arte de perder el tiempo. No intente replicar las excusas presentadas con oficiales de tránsito reales.
-            </p>
-            <p class="text-xs font-mono text-gray-500">
-                Creado bajo la ley de la Inercia Social. Versión 4.2.0-Ralentí. 
-            </p>
-        </div>
-    </footer>
-
+    <!-- Web Audio & Core Scripts Matrix -->
     <script>
-        // Custom Sound Generator using Web Audio API
+        // Web Audio API context placeholder
         let audioCtx = null;
 
         function initAudio() {
@@ -470,371 +454,196 @@
             }
         }
 
-        // Generate a crisp synthesized vehicle horn or abstract mechanical noise
-        function playPerfectHorn(frequency = 350, type = 'sine', duration = 0.15) {
+        function playPerfectHorn(freq, type = 'sine', duration = 0.2) {
             try {
                 initAudio();
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                
                 const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
+                const gainNode = audioCtx.createGain();
+                
                 osc.type = type;
-                osc.frequency.value = frequency;
-
-                // Modulate frequency slightly to sound like a realistic annoying horn
-                if (type === 'sawtooth' || type === 'triangle') {
-                    osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(frequency * 1.05, audioCtx.currentTime + duration);
-                }
-
-                // Envelope to prevent popping
-                gain.gain.setValueAtTime(0, audioCtx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.25, audioCtx.currentTime + 0.02);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
                 osc.start();
                 osc.stop(audioCtx.currentTime + duration);
-            } catch (e) {
-                console.warn("Audio Context block o no soportado:", e);
+            } catch(e) {
+                console.log("Audio Bloqueado o No Soportado.");
             }
         }
 
-        // Existential state variables
-        const excusasSurrealistas = [
-            "Un grupo de patos con crisis existencial decidió hacer sentadas frente a mi parachoques.",
-            "El coche de adelante avanzaba en una dimensión temporal distinta y yo iba detrás de su pasado.",
-            "El semáforo parpadeó en un amarillo tan nostálgico que tuve que estacionar a reflexionar.",
-            "Una bandada de palomas urbanas secuestró conceptualmente mi carril de aceleración.",
-            "Me distraje intentando calcular cuántos coches rojos se necesitan para curar la angustia moderna.",
-            "El asfalto comenzó a quejarse en un tono de do menor y decidí respetarle el duelo.",
-            "El GPS sugirió un 'desvío espiritual' y terminé meditando junto a un contenedor de reciclaje de cartón.",
-            "Me quedé atrapado en una paradoja vial donde el ceda el paso dependía del karma del conductor opuesto.",
-            "Un peatón cruzaba tan despacio que su sombra empezó a echar raíces en el paso de cebra."
-        ];
+        function triggerHonkCascade() {
+            const notes = [220, 293.66, 329.63, 440];
+            notes.forEach((freq, idx) => {
+                setTimeout(() => {
+                    playPerfectHorn(freq, idx % 2 === 0 ? 'sawtooth' : 'triangle', 0.4);
+                }, idx * 150);
+            });
+        }
 
-        const respuestasOraculo = [
-            "⚠️ CONSEJO KÁRMICO: Se avecina una racha de mala suerte con los gorrillas. Compra un amuleto con forma de tuerca.",
-            "🚶 DICTAMEN: Cruce en verde inmediato en tu vida mental, pero cuidado con las bicicletas de la indecisión.",
-            "🔥 ADVERTENCIA: Has excedido el límite de velocidad en tus pensamientos. Aparca la ambición durante dos días.",
-            "🛴 PRONÓSTICO: Tu destino está bloqueado temporalmente por un patinete mal aparcado en la vereda de la felicidad."
-        ];
+        // Live Clock Simulating Chronostasis
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('es-ES') + " [TIEMPO RELATIVIZADO]";
+            document.getElementById('liveClock').innerText = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
 
-        // Theme management: Classic Paper (Light) vs Alarm Mode (Dark)
-        let isDarkMode = false;
+        // Theme Shifter (Normal Paper vs Emergency Warning)
         function toggleTheme() {
-            isDarkMode = !isDarkMode;
             const body = document.getElementById('mainBody');
             const btnText = document.getElementById('themeBtnText');
-            const artPanel = document.getElementById('artisticPanel');
-
-            if (isDarkMode) {
-                // Apply Neo-industrial warning colors
-                body.classList.remove('paper-grain', 'text-brand-ink');
-                body.classList.add('bg-zinc-950', 'text-yellow-400');
-                btnText.textContent = "Modo Papel";
-                showToast("Activado Modo Alarma Nocturna: Peligro de Niebla Conceptual");
-                playPerfectHorn(150, 'sawtooth', 0.4);
+            const stateText = document.getElementById('transitState');
+            
+            if(body.classList.contains('paper-grain')) {
+                body.classList.remove('paper-grain');
+                body.classList.add('bg-red-100');
+                btnText.innerText = "Modo Confort";
+                stateText.innerText = "¡COLAPSO CRÍTICO INTELECTUAL!";
+                playPerfectHorn(180, 'sawtooth', 0.6);
             } else {
-                // Return to clean Classic paper
-                body.classList.add('paper-grain', 'text-brand-ink');
-                body.classList.remove('bg-zinc-950', 'text-yellow-400');
-                btnText.textContent = "Modo Alarma";
-                showToast("Retorno al Modo Papel de Diario");
-                playPerfectHorn(400, 'sine', 0.1);
+                body.classList.remove('bg-red-100');
+                body.classList.add('paper-grain');
+                btnText.innerText = "Modo Alarma";
+                stateText.innerText = "Embudo existencial de 15 km";
+                playPerfectHorn(440, 'sine', 0.1);
             }
         }
 
-        // Open Modal reader
-        function openArticleModal(title, author, content) {
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalAuthor').textContent = author;
-            document.getElementById('modalBodyText').innerHTML = `<p>${content}</p><p class="mt-4 italic text-sm text-gray-500">Nota del Editor: Cualquier parecido con la cordura urbana es pura coincidencia temporaria.</p>`;
+        // Semaphore Dynamics
+        function changeSemaphore(color, pitch, text) {
+            // Reset active states
+            ['red', 'yellow', 'green'].forEach(c => {
+                const element = document.getElementById(`light-${c}`);
+                element.style.backgroundColor = '';
+                element.style.borderColor = '';
+            });
             
-            const modal = document.getElementById('articleModal');
-            modal.classList.remove('hidden');
-            // Little audio cue
-            playPerfectHorn(300, 'triangle', 0.1);
+            const target = document.getElementById(`light-${color}`);
+            const toneDisplay = document.getElementById('synthToneName');
+            
+            if(color === 'red') {
+                target.style.backgroundColor = '#EF4444';
+                toneDisplay.innerText = "Parada Histórica";
+            } else if(color === 'yellow') {
+                target.style.backgroundColor = '#F59E0B';
+                toneDisplay.innerText = "Ansiedad Intermitente";
+            } else {
+                target.style.backgroundColor = '#10B981';
+                toneDisplay.innerText = "Fuga Utópica";
+            }
+            
+            document.getElementById('semaphoreMessage').innerText = `"${text}"`;
+            playPerfectHorn(pitch, 'triangle', 0.3);
+        }
+
+        // Excuse Generator Matrix
+        const surrealExtensions = [
+            "debido a que una bandada de patinetes eléctricos migratorios bloqueó el paso elevado en formación militar.",
+            "porque entré en una rotonda cuántica y aparecí momentáneamente en los suburbios de Amberes en 1994.",
+            "ya que me quedé contemplando la luz parpadeante del indicador de aceite y comprendí la fragilidad del capitalismo moderno.",
+            "porque un camión cargado de espejos rompió el eje delantero, obligándonos a todos a mirar fijamente nuestros propios rostros de fracaso durante hora y media."
+        ];
+
+        function generateAbsurdExcuse() {
+            const base = document.getElementById('excuseBaseInput').value || "No he llegado a mi hora";
+            const randomExt = surrealExtensions[Math.floor(Math.random() * surrealExtensions.length)];
+            const finalBox = document.getElementById('excuseOutputBox');
+            
+            document.getElementById('excuseText').innerText = `${base}, ${randomExt}`;
+            finalBox.classList.remove('hidden');
+            playPerfectHorn(350, 'sine', 0.15);
+        }
+
+        function copyExcuseToClipboard() {
+            const txt = document.getElementById('excuseText').innerText;
+            navigator.clipboard.writeText(txt).then(() => {
+                alert("Coartada copiada. Envíela con rostro impasible.");
+            });
+        }
+
+        // Oracle Wisdom
+        const oracleResponses = [
+            "Su destino está bloqueado por un camión de mudanzas espirituales. No intente adelantar por la derecha.",
+            "El peatón del libro físico tiene razón. Usted es esclavo del octanaje; él es dueño de la página.",
+            "Cambiar de carril de manera compulsiva solo revelará que huye de su propio eje interior.",
+            "Mañana el semáforo estará verde, pero usted ya habrá aprendido a amar la quietud del arcén."
+        ];
+
+        function askOracle() {
+            const q = document.getElementById('consultorQuestion').value;
+            if(!q) return alert("Haga una pregunta válida al parachoques.");
+            
+            const answerBox = document.getElementById('oracleAnswerBox');
+            const resp = oracleResponses[Math.floor(Math.random() * oracleResponses.length)];
+            
+            answerBox.innerText = resp;
+            answerBox.classList.remove('hidden');
+            playPerfectHorn(290, 'sawtooth', 0.4);
+        }
+
+        // Grievances Board (Localstorage persistence)
+        function loadGrievances() {
+            const feed = document.getElementById('grievanceFeed');
+            const local = JSON.parse(localStorage.getItem('traficante_grievances')) || [
+                {author: "NeumáticoQuemado", text: "El conductor de adelante lleva un perro de peluche que me juzga con la mirada."},
+                {author: "TaxistaNietzscheano", text: "La tercera marcha de mi coche rasca igual que mi alma al recordar los lunes."}
+            ];
+            
+            feed.innerHTML = local.map(g => `
+                <div class="bg-brand-paper/70 p-2 rounded border border-gray-200 font-sans text-xs">
+                    <span class="font-bold text-brand-red">@${g.author}:</span>
+                    <p class="text-gray-700 italic mt-0.5">"${g.text}"</p>
+                </div>
+            `).join('');
+        }
+
+        function submitGrievance(e) {
+            e.preventDefault();
+            const auth = document.getElementById('grievanceAuthor').value;
+            const text = document.getElementById('grievanceText').value;
+            
+            const local = JSON.parse(localStorage.getItem('traficante_grievances')) || [];
+            local.unshift({author: auth, text: text});
+            localStorage.setItem('traficante_grievances', JSON.stringify(local.slice(0, 15)));
+            
+            document.getElementById('grievanceAuthor').value = '';
+            document.getElementById('grievanceText').value = '';
+            
+            loadGrievances();
+            playPerfectHorn(150, 'sine', 0.3);
+        }
+
+        // Modal triggers
+        function openArticleModal(title, author, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalAuthor').innerText = author;
+            document.getElementById('modalBodyText').innerHTML = `<p>${text}</p>`;
+            document.getElementById('articleModal').classList.remove('hidden');
+            initAudio();
         }
 
         function closeArticleModal() {
             document.getElementById('articleModal').classList.add('hidden');
         }
 
-        // General custom Toast display
-        function showToast(message) {
-            const toast = document.getElementById('customToast');
-            const toastMsg = document.getElementById('toastMessage');
-            toastMsg.textContent = message;
-            toast.classList.remove('hidden');
-            toast.classList.remove('translate-y-2');
-            
-            setTimeout(() => {
-                toast.classList.add('translate-y-2');
-                toast.classList.add('hidden');
-            }, 3000);
-        }
-
-        // Existential Traffic Light controller
-        function changeSemaphore(color, freq, message) {
-            // Reset lights colors
-            document.getElementById('light-red').className = "w-16 h-16 rounded-full bg-red-950 border-2 border-red-500/30 shadow-lg flex items-center justify-center transition-all hover:bg-red-500 active:scale-95";
-            document.getElementById('light-yellow').className = "w-16 h-16 rounded-full bg-yellow-950 border-2 border-yellow-500/30 shadow-lg flex items-center justify-center transition-all hover:bg-yellow-500 active:scale-95";
-            document.getElementById('light-green').className = "w-16 h-16 rounded-full bg-green-950 border-2 border-green-500/30 shadow-lg flex items-center justify-center transition-all hover:bg-green-500 active:scale-95";
-
-            const msgElement = document.getElementById('semaphoreMessage');
-            const toneName = document.getElementById('synthToneName');
-
-            if (color === 'red') {
-                document.getElementById('light-red').className = "w-16 h-16 rounded-full bg-red-600 border-2 border-red-400 shadow-[0_0_15px_rgba(239,68,68,0.7)] flex items-center justify-center scale-105 transition-all text-white";
-                toneName.textContent = "Alarma Inmóvil";
-                playPerfectHorn(freq, 'sawtooth', 0.35);
-            } else if (color === 'yellow') {
-                document.getElementById('light-yellow').className = "w-16 h-16 rounded-full bg-yellow-500 border-2 border-yellow-300 shadow-[0_0_15px_rgba(234,179,8,0.7)] flex items-center justify-center scale-105 transition-all text-white";
-                toneName.textContent = "Duda de Transición";
-                playPerfectHorn(freq, 'sine', 0.45);
-            } else if (color === 'green') {
-                document.getElementById('light-green').className = "w-16 h-16 rounded-full bg-green-500 border-2 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.7)] flex items-center justify-center scale-105 transition-all text-white";
-                toneName.textContent = "Huida Rápida";
-                playPerfectHorn(freq, 'triangle', 0.2);
-            }
-
-            msgElement.style.opacity = '0';
-            setTimeout(() => {
-                msgElement.textContent = `"${message}"`;
-                msgElement.style.opacity = '1';
-            }, 150);
-        }
-
-        // Play cascade of horns
-        function triggerHonkCascade() {
-            const notes = [220, 277, 329, 440];
-            notes.forEach((freq, index) => {
-                setTimeout(() => {
-                    playPerfectHorn(freq, index % 2 === 0 ? 'triangle' : 'sine', 0.25);
-                }, index * 120);
-            });
-            showToast("Bocinas Sinfónicas Sincronizadas");
-        }
-
-        // Generate dynamic excuse
-        function generateAbsurdExcuse() {
-            const inputVal = document.getElementById('excuseBaseInput').value.trim();
-            const randomIndex = Math.floor(Math.random() * excusasSurrealistas.length);
-            const prefix = inputVal ? `Respecto a "${inputVal}": ` : "Lamentablemente, ";
-            
-            const fullExcuse = `${prefix}${excusasSurrealistas[randomIndex]}`;
-            
-            const outBox = document.getElementById('excuseOutputBox');
-            const outText = document.getElementById('excuseText');
-
-            outText.textContent = fullExcuse;
-            outBox.classList.remove('hidden');
-            
-            playPerfectHorn(520, 'sine', 0.15);
-        }
-
-        // Clipboard action compatible with iframe restrictions (execCommand fallback)
-        function copyExcuseToClipboard() {
-            const textToCopy = document.getElementById('excuseText').textContent;
-            
-            // Fallback copy using a temporary textarea
-            const tempTextArea = document.createElement("textarea");
-            tempTextArea.value = textToCopy;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            
-            try {
-                document.execCommand('copy');
-                showToast("¡Coartada Surrealista copiada!");
-            } catch (err) {
-                console.error("No se pudo copiar el texto", err);
-            }
-            
-            document.body.removeChild(tempTextArea);
-        }
-
-        // Local Grievances (LocalStorage)
-        let defaultGrievances = [
-            { author: "Peatón Paciente", text: "Esperé tanto en la cebra de la Gran Vía que mi abrigo de lana pasó de moda dos veces." },
-            { author: "Ciclista Indignado", text: "Un conductor me pitó por ir en bici por mi carril. Le respondí lanzándole un poema dadá y ahora somos socios de una startup." }
-        ];
-
-        function loadGrievances() {
-            const localData = localStorage.getItem('diario_trafico_grievances');
-            let list = defaultGrievances;
-            if (localData) {
-                list = JSON.parse(localData);
-            } else {
-                localStorage.setItem('diario_trafico_grievances', JSON.stringify(defaultGrievances));
-            }
-
-            const feed = document.getElementById('grievanceFeed');
-            feed.innerHTML = '';
-            
-            list.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = "bg-brand-paper p-3 rounded border border-brand-ink/30 relative text-xs hover:shadow-md transition-shadow";
-                card.innerHTML = `
-                    <div class="font-sans font-bold text-[10px] text-brand-orange uppercase flex justify-between">
-                        <span>👤 ${escapeHTML(item.author)}</span>
-                        <button onclick="deleteGrievance(${index})" class="text-brand-red font-bold hover:scale-110">✕</button>
-                    </div>
-                    <p class="font-serif mt-1 text-brand-ink leading-relaxed">"${escapeHTML(item.text)}"</p>
-                `;
-                feed.appendChild(card);
-            });
-        }
-
-        function submitGrievance(event) {
-            event.preventDefault();
-            const author = document.getElementById('grievanceAuthor').value.trim();
-            const text = document.getElementById('grievanceText').value.trim();
-
-            if (author && text) {
-                const localData = localStorage.getItem('diario_trafico_grievances');
-                let list = localData ? JSON.parse(localData) : defaultGrievances;
-                
-                list.unshift({ author, text });
-                localStorage.setItem('diario_trafico_grievances', JSON.stringify(list));
-                
-                // Clear form
-                document.getElementById('grievanceAuthor').value = '';
-                document.getElementById('grievanceText').value = '';
-
-                loadGrievances();
-                showToast("¡Queja plasmada en el mural de la inercia!");
-                playPerfectHorn(350, 'sawtooth', 0.2);
-            }
-        }
-
-        function deleteGrievance(index) {
-            const localData = localStorage.getItem('diario_trafico_grievances');
-            if (localData) {
-                let list = JSON.parse(localData);
-                list.splice(index, 1);
-                localStorage.setItem('diario_trafico_grievances', JSON.stringify(list));
-                loadGrievances();
-                showToast("Queja archivada en el olvido vial.");
-                playPerfectHorn(180, 'sine', 0.1);
-            }
-        }
-
-        function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-            );
-        }
-
-        // Ask the Oracle module
-        function askOracle() {
-            const type = document.getElementById('consultorType').value;
-            const question = document.getElementById('consultorQuestion').value.trim();
-
-            if (!question) {
-                showToast("¡Haz una pregunta primero!");
-                return;
-            }
-
-            const answerBox = document.getElementById('oracleAnswerBox');
-            const randomAns = respuestasOraculo[Math.floor(Math.random() * respuestasOraculo.length)];
-            
-            answerBox.innerHTML = `
-                <div class="font-sans font-bold text-[10px] uppercase text-brand-yellow mb-1">Respuesta para el ${type}:</div>
-                "${randomAns}"
-            `;
-            answerBox.classList.remove('hidden');
-
-            // Synthesize mystical chord
-            playPerfectHorn(120, 'triangle', 0.4);
-            setTimeout(() => {
-                playPerfectHorn(180, 'sine', 0.3);
-            }, 150);
-        }
-
-        // Chaos Button at the cover canvas
         function triggerVisualChaos() {
-            const colors = ['bg-brand-red', 'bg-brand-yellow', 'bg-brand-orange', 'bg-brand-charcoal', 'bg-emerald-600'];
-            const centerIcon = document.getElementById('artVisualCenter');
-            
-            // Randomly transform SVG size/rotation
-            const randRotate = Math.floor(Math.random() * 360);
-            const randScale = 0.8 + Math.random() * 0.6;
-            centerIcon.style.transform = `rotate(${randRotate}deg) scale(${randScale})`;
-
-            // Random horn
-            const randFreq = 200 + Math.floor(Math.random() * 600);
-            const oscTypes = ['sine', 'triangle', 'sawtooth'];
-            const randOsc = oscTypes[Math.floor(Math.random() * oscTypes.length)];
-            playPerfectHorn(randFreq, randOsc, 0.3);
-
-            showToast(`Caos Visual Sincronizado: ${randFreq}Hz`);
+            const artCenter = document.getElementById('artVisualCenter');
+            artCenter.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.5})`;
+            playPerfectHorn(Math.random() * 600 + 100, 'sawtooth', 0.1);
         }
 
-        // Absurd Status Ticker randomness interval
-        const dynamicStatus = [
-            "Atasco existencial de 15 km",
-            "Tránsito fluido de ideas raras",
-            "Semáforos apagados por huelga de fotones",
-            "Niebla espesa de dudas laborales",
-            "Operación salida de la realidad activada",
-            "Baches emocionales sin señalizar en el carril izquierdo"
-        ];
-
-        function changeTransitState() {
-            const stateEl = document.getElementById('transitState');
-            const randomState = dynamicStatus[Math.floor(Math.random() * dynamicStatus.length)];
-            stateEl.textContent = randomState;
-        }
-
-        // Initialize clock and data
+        // Init bootstrap
         window.onload = function() {
-            // Live clock displaying "desviated" hours
-            setInterval(() => {
-                const now = new Date();
-                const minutesSkewed = now.getMinutes() + 15; // 15 mins delayed like real traffic
-                const hours = now.getHours().toString().padStart(2, '0');
-                const mins = (minutesSkewed % 60).toString().padStart(2, '0');
-                const secs = now.getSeconds().toString().padStart(2, '0');
-                document.getElementById('liveClock').textContent = `Hora Vial Atascada: ${hours}:${mins}:${secs} (15m tarde)`;
-            }, 1000);
-
-            // Populate current date in classic format
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const today = new Date();
-            document.getElementById('currentDate').textContent = today.toLocaleDateString('es-ES', options);
-
-            // Change dynamic transit state every 10 seconds
-            setInterval(changeTransitState, 10000);
-
-            // Load community grievances from LocalStorage or Default
             loadGrievances();
-        };
+        }
     </script>
 </body>
-</html>lack text-brand-yellow">
-        <div><span class="font-bold">TRAFICANDO IDEAS:</span> <span class="animate-pulse text-red-500">Modo Nocturno Activado</span></div>
-        <div id="liveClock">Martes, 26 de Mayo de 2026</div>
-    </div>
-
-    <header class="container mx-auto px-4 py-12 text-center max-w-7xl">
-        <h1 class="font-display text-5xl md:text-8xl font-black uppercase tracking-tight text-white">DIARIO EL TRÁFICO</h1>
-        <p class="text-gray-500 italic mt-4 text-xl">"La verdad avanza a oscuras"</p>
-    </header>
-
-    <div class="bg-black text-white border-y border-gray-800 py-3 overflow-hidden flex">
-        <span class="bg-brand-red text-white font-bold px-4 py-1 shrink-0 uppercase animate-pulse">ÚLTIMO:</span>
-        <div class="scrolling-text whitespace-nowrap font-bold">🚗 Un conductor tarda tanto en salir del túnel que sale jubilado... 🚦 El semáforo cumple 8 meses en rojo... 🧠 La filosofía del embrague es el nuevo estándar de oro.</div>
-    </div>
-
-    <main class="container mx-auto px-4 py-12 max-w-7xl">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <section class="lg:col-span-3 border-r border-gray-800 space-y-8 text-gray-400">
-                <div class="border-b border-gray-800 pb-6">
-                    <span class="text-brand-red text-[10px] font-bold uppercase tracking-widest">● OPINIÓN</span>
-                    <h3 class="font-bold text-lg mt-2 text-white">La Metafísica del MATE</h3>
+</html>
